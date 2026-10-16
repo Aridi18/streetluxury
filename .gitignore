@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Runtime data (never commit user audio, keys or model weights)
+backend/var/
+backend/models_cache/
+backend/.env
+*.key
+.env
+.env.*
+!.env.example
+
+# Evaluation working data
+evaluation/data/
+evaluation/work/
+
+# Node
+node_modules/
+frontend/dist/
+*.log
+.DS_Store
