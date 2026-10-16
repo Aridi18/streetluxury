@@ -11,6 +11,7 @@ import { FAMILY_LABEL } from "@/lib/verdict";
 const DETECTOR_LABEL: Record<string, string> = {
   bandwidth: "Bandwidth consistency",
   noise_floor: "Background noise continuity",
+  noise_track: "Noise floor through speech",
   spectral_change: "Acoustic change (ΔBIC)",
   discontinuity: "Waveform discontinuities",
   digital_silence: "Digital silence",
@@ -68,7 +69,7 @@ export function FindingsList({
                 </div>
                 <div className="tabular mt-0.5 font-mono text-[12px] text-muted">
                   {fmtTime(f.start)} – {fmtTime(f.end)}
-                  {f.related && <span className="text-faint"> · copy of {fmtTime(f.related.source_start)}</span>}
+                  {f.related && <span className="text-faint"> · matches {fmtTime(f.related.source_start)}</span>}
                 </div>
                 <div className="mt-1.5 line-clamp-2 text-[12.5px] leading-relaxed text-ink-soft">{f.summary}</div>
                 <div className="mt-2 flex flex-wrap items-center gap-1.5">
@@ -153,7 +154,8 @@ export function FindingDetail({ f, onPlay, onFocus }: { f: Finding; onPlay: () =
       </p>
       {f.related && (
         <div className="mt-4 rounded-lg border border-line px-3.5 py-2.5 text-[13px]">
-          Matching source audio: <span className="font-mono">{fmtTime(f.related.source_start)} – {fmtTime(f.related.source_end)}</span>
+          Identical audio also occurs at <span className="font-mono">{fmtTime(f.related.source_start)} – {fmtTime(f.related.source_end)}</span>.
+          Either occurrence may be the copy; both are marked on the timeline.
         </div>
       )}
       <h4 className="eyebrow mt-6">Supporting evidence</h4>

@@ -1,0 +1,187 @@
+{
+  "version": "bench-2026-10-16",
+  "created_at": "2026-10-16T20:06:49+00:00",
+  "provenance": {
+    "source": "Audio Sentinel edit benchmark (evaluation/edit_benchmark.py)",
+    "validated": true,
+    "dataset": "Synthetic edits of LibriSpeech dev-clean utterances (CC BY 4.0): 200 base utterances (speaker-disjoint: 22 calibration / 17 test speakers), one manipulation each, rendered as WAV, MP3 64 kbit/s and Opus 24 kbit/s",
+    "procedure": "Family weights = per-family precision on the calibration half (clipped to [0.3, 1]); report threshold = lowest fused score with <= 1 false finding per 10 min of unedited calibration audio; high threshold = <= 0.2 false high-severity findings per 10 min.",
+    "note": "Held-out test: boundary recall 36%, finding precision 94%, 0.70 false findings per 10 min of unedited audio."
+  },
+  "fusion": {
+    "family_weights": {
+      "background": 0.3,
+      "spectral": 1.0,
+      "waveform": 0.7058823529411765,
+      "prosody": 0.6,
+      "acoustics": 0.3,
+      "enf": 0.3181818181818182,
+      "duplication": 1.0
+    },
+    "report_threshold": 0.36,
+    "high_threshold": 0.49
+  },
+  "family_statistics": {
+    "background": {
+      "clusters": 110,
+      "precision": 0.2
+    },
+    "acoustics": {
+      "clusters": 95,
+      "precision": 0.28421052631578947
+    },
+    "duplication": {
+      "clusters": 31,
+      "precision": 1.0
+    },
+    "waveform": {
+      "clusters": 51,
+      "precision": 0.7058823529411765
+    },
+    "spectral": {
+      "clusters": 41,
+      "precision": 1.0
+    },
+    "enf": {
+      "clusters": 44,
+      "precision": 0.3181818181818182
+    }
+  },
+  "metrics": {
+    "calibration": {
+      "recall": 0.3371647509578544,
+      "file_detection_rate": 0.3233333333333333,
+      "precision": 0.9649122807017544,
+      "false_findings_per_10min": 0.9662506756205891,
+      "false_high_findings_per_10min": 0.12078133445257364,
+      "file_fpr": 0.02666666666666667,
+      "file_fnr": 0.6766666666666667,
+      "median_localization_error_s": 0.050040837854208764,
+      "boundaries": 522,
+      "edited_files": 300,
+      "unedited_files": 300,
+      "unedited_minutes": 82.79425000000005
+    },
+    "test": {
+      "recall": 0.36015325670498083,
+      "file_detection_rate": 0.34,
+      "precision": 0.9448818897637795,
+      "false_findings_per_10min": 0.6976196382253549,
+      "false_high_findings_per_10min": 0.0,
+      "file_fpr": 0.02,
+      "file_fnr": 0.6599999999999999,
+      "median_localization_error_s": 0.051725347281673884,
+      "boundaries": 522,
+      "edited_files": 300,
+      "unedited_files": 300,
+      "unedited_minutes": 86.00675312500013
+    },
+    "test_engineering_defaults": {
+      "recall": 0.43103448275862066,
+      "file_detection_rate": 0.43333333333333335,
+      "precision": 0.7373271889400922,
+      "false_findings_per_10min": 8.255165719000033,
+      "false_high_findings_per_10min": 4.1857178293521295,
+      "file_fpr": 0.21333333333333335,
+      "file_fnr": 0.5666666666666667,
+      "median_localization_error_s": 0.05212115071157264,
+      "boundaries": 522,
+      "edited_files": 300,
+      "unedited_files": 300,
+      "unedited_minutes": 86.00675312500013
+    }
+  },
+  "test_breakdown": {
+    "by_manipulation": [
+      {
+        "type": "cut_hard",
+        "n": 39,
+        "recall": 0.0,
+        "file_detection_rate": 0.0,
+        "median_localization_error_s": null
+      },
+      {
+        "type": "cut_crossfade",
+        "n": 39,
+        "recall": 0.0,
+        "file_detection_rate": 0.0,
+        "median_localization_error_s": null
+      },
+      {
+        "type": "insert_same_speaker",
+        "n": 39,
+        "recall": 0.038461538461538464,
+        "file_detection_rate": 0.07692307692307693,
+        "median_localization_error_s": 0.07893750000000033
+      },
+      {
+        "type": "insert_other_speaker",
+        "n": 39,
+        "recall": 0.0641025641025641,
+        "file_detection_rate": 0.07692307692307693,
+        "median_localization_error_s": 0.009082548811894853
+      },
+      {
+        "type": "duplicate",
+        "n": 36,
+        "recall": 0.9444444444444444,
+        "file_detection_rate": 0.9444444444444444,
+        "median_localization_error_s": 0.07931250000000034
+      },
+      {
+        "type": "silence_insert",
+        "n": 36,
+        "recall": 1.0,
+        "file_detection_rate": 1.0,
+        "median_localization_error_s": 0.039232185468158765
+      },
+      {
+        "type": "noisy_insert",
+        "n": 36,
+        "recall": 0.1388888888888889,
+        "file_detection_rate": 0.16666666666666666,
+        "median_localization_error_s": 0.060875000000000234
+      },
+      {
+        "type": "bandlimited_insert",
+        "n": 36,
+        "recall": 0.4166666666666667,
+        "file_detection_rate": 0.5555555555555556,
+        "median_localization_error_s": 0.03480184280944254
+      }
+    ],
+    "by_condition": [
+      {
+        "condition": "wav",
+        "recall": 0.39655172413793105,
+        "precision": 0.9387755102040817,
+        "false_findings_per_10min": 0.6976196382253563,
+        "file_fpr": 0.02
+      },
+      {
+        "condition": "mp3_64k",
+        "recall": 0.39080459770114945,
+        "precision": 0.9574468085106383,
+        "false_findings_per_10min": 0.6976196382253563,
+        "file_fpr": 0.02
+      },
+      {
+        "condition": "opus_24k",
+        "recall": 0.29310344827586204,
+        "precision": 0.9354838709677419,
+        "false_findings_per_10min": 0.6976196382253563,
+        "file_fpr": 0.02
+      }
+    ],
+    "by_position": [
+      {
+        "position": "in a pause",
+        "recall": 0.3103448275862069
+      },
+      {
+        "position": "in running speech",
+        "recall": 0.4099616858237548
+      }
+    ]
+  }
+}

@@ -18,6 +18,7 @@ from ..config import get_settings
 # Raw-statistic -> strength mappings (logistic midpoint/scale in the statistic's units).
 DEFAULT_EDIT_PARAMS: dict[str, Any] = {
     "noise_floor": {"midpoint_db": 6.0, "scale_db": 1.5, "min_db": 3.0, "min_z": 4.0},
+    "noise_track": {"midpoint_db": 8.0, "scale_db": 2.0, "min_db": 5.0, "min_z": 4.0, "min_t": 2.5},
     "bandwidth": {"min_shift_hz": 1000.0, "cliff_db": 25.0, "adaptive_codec_factor": 0.4},
     "spectral_change": {"midpoint": 1.2, "scale": 0.3, "min_z": 5.0, "max_strength": 0.5},
     "discontinuity": {"midpoint_db": 30.0, "scale_db": 4.0, "min_ratio_db": 22.0, "max_strength": 0.45},

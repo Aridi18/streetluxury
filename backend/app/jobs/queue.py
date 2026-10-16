@@ -7,7 +7,7 @@ to an optimistic compare-and-set update.
 
 from __future__ import annotations
 
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 
 from sqlalchemy import and_, or_, select, update
 from sqlalchemy.exc import IntegrityError
@@ -90,6 +90,30 @@ def claim(db: Session, worker_id: str, kinds: list[str] | None = None) -> Job | 
 
 def heartbeat(db: Session, job_id: int) -> None:
     db.execute(update(Job).where(Job.id == job_id).values(heartbeat_at=utcnow()))
+    db.commit()
+
+
+class Defer(Exception):  # noqa: N818 - control-flow signal, not an error
+    """Raised by a handler whose prerequisites are not ready yet (re-run later, no attempt used)."""
+
+    def __init__(self, seconds: float, reason: str):
+        super().__init__(reason)
+        self.seconds = seconds
+
+
+def _aware(dt: datetime) -> datetime:
+    return dt if dt.tzinfo else dt.replace(tzinfo=UTC)
+
+
+def defer(db: Session, job: Job, seconds: float, reason: str, max_wait_s: float = 3600) -> None:
+    """Put a job back in the queue without using up an attempt (bounded by ``max_wait_s``)."""
+    if (utcnow() - _aware(job.created_at)).total_seconds() > max_wait_s:
+        fail(db, job, f"Gave up waiting: {reason}", retry=False)
+        return
+    job.status = "queued"
+    job.attempts = max(0, job.attempts - 1)
+    job.run_after = utcnow() + timedelta(seconds=seconds)
+    job.locked_by = None
     db.commit()
 
 

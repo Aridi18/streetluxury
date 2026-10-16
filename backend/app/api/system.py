@@ -32,6 +32,12 @@ SIGNAL_CHECKS = [
         "Compares the background noise in pauses before and after each instant.",
     ),
     (
+        "noise_track",
+        "Noise floor through speech",
+        "background",
+        "Minimum-statistics tracking of the per-band noise floor through continuous speech.",
+    ),
+    (
         "spectral_change",
         "Acoustic change (ΔBIC)",
         "spectral",

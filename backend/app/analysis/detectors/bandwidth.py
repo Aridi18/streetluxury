@@ -21,7 +21,7 @@ from ..context import AnalysisContext
 from ..features import FRAME_S
 
 ID = "bandwidth"
-VERSION = "1.0"
+VERSION = "1.2"
 ADAPTIVE_CODECS = {"opus": 0.4, "aac": 0.6, "amr_nb": 0.5, "amr_wb": 0.5, "vorbis": 0.7}
 
 
@@ -30,11 +30,15 @@ def _smooth_freq(l_db: np.ndarray, bins: int) -> np.ndarray:
 
 
 def find_cutoff(ltas_db: np.ndarray, freqs: np.ndarray, cliff_db: float) -> tuple[float, float]:
-    """Return (cutoff_hz, cliff_depth_db). cutoff = Nyquist when no cliff is found."""
+    """Return (cutoff_hz, cliff_depth_db). cutoff = Nyquist when no cliff is found.
+
+    A cliff is a drop of at least ``cliff_db`` within 500 Hz, above which the
+    spectrum stays flat (a filter's stop band) rather than showing speech structure.
+    """
     nyq = float(freqs[-1])
     df = float(freqs[1] - freqs[0])
-    half = max(1, int(round(500.0 / df)))
-    sm = _smooth_freq(ltas_db, max(1, int(round(200.0 / df))))
+    half = max(1, int(round(250.0 / df)))
+    sm = _smooth_freq(ltas_db, max(1, int(round(150.0 / df))))
     n = sm.size
     drop = np.full(n, -np.inf)
     drop[half : n - half] = sm[: n - 2 * half] - sm[2 * half :]
@@ -42,15 +46,24 @@ def find_cutoff(ltas_db: np.ndarray, freqs: np.ndarray, cliff_db: float) -> tupl
     cand = np.flatnonzero(valid & (drop >= cliff_db))
     if cand.size == 0:
         return nyq, 0.0
-    # Highest contiguous region of cliff bins; take its steepest point.
     groups = np.split(cand, np.flatnonzero(np.diff(cand) > 1) + 1)
-    g = groups[-1]
-    k = int(g[np.argmax(drop[g])])
-    above = sm[min(n - 1, k + half) :]
-    below_level = sm[max(0, k - half)]
-    if above.size and float(np.median(above)) > below_level - cliff_db:
-        return nyq, 0.0  # not a true cliff: energy recovers above
-    return float(freqs[k]), float(drop[k])
+    for g in reversed(groups):  # highest cliff first
+        k = int(g[np.argmax(drop[g])])
+        stop = sm[min(n - 1, k + half) : min(n, k + half + int(round(1500.0 / df)))]
+        below_level = sm[max(0, k - half)]
+        if stop.size < 3:
+            continue
+        if float(np.mean(stop)) > below_level - cliff_db or float(np.std(stop)) > 4.0:
+            continue  # energy or structure continues above: not a filter cliff
+        return float(freqs[k]), float(drop[k])
+    return nyq, 0.0
+
+
+def _band_db(ltas: np.ndarray, freqs: np.ndarray, lo: float, hi: float) -> float | None:
+    m = (freqs >= lo) & (freqs <= hi)
+    if m.sum() < 2:
+        return None
+    return float(np.mean(dsp.db(ltas[m])))
 
 
 def run(ctx: AnalysisContext) -> DetectorOutput:
@@ -61,8 +74,9 @@ def run(ctx: AnalysisContext) -> DetectorOutput:
         family="spectral",
         version=VERSION,
         method=(
-            "Estimates the upper-frequency cutoff (steep spectral cliff) of speech in 1 s "
-            "windows at the native sample rate and reports persistent cutoff shifts."
+            "Estimates the upper-frequency cutoff (steep spectral cliff above which even the "
+            "background is absent) in 1 s windows at the native sample rate and reports persistent, "
+            "spectrally confirmed cutoff shifts."
         ),
     )
     sr = ctx.sr
@@ -76,7 +90,9 @@ def run(ctx: AnalysisContext) -> DetectorOutput:
     nfr = dsp.n_frames(len(ctx.x), hop)
     t_frames = np.arange(nfr) * hop / sr
     vad_idx = np.clip(np.round(t_frames / FRAME_S).astype(int), 0, ctx.frames.n - 1)
-    speech = ctx.vad.speech[vad_idx]
+    # All non-silent frames (speech and background): a channel or codec low-pass removes the
+    # background noise above its cutoff too, whereas the natural upper edge of speech does not.
+    speech = ctx.frames.energy_db[vad_idx] > -100.0
 
     win, step = 50, 25  # 1 s windows, 0.5 s hop (in 20 ms frames)
     n_w = max(0, (nfr - win) // step + 1)
@@ -116,7 +132,7 @@ def run(ctx: AnalysisContext) -> DetectorOutput:
 
     cut = np.full(n_w, np.nan)
     for w in range(n_w):
-        if counts[w] >= 10:
+        if counts[w] >= 25:
             cut[w], _ = find_cutoff(dsp.db(sums[w] / counts[w]), freqs, p["cliff_db"])
     out.summary["window_cutoffs_hz"] = {
         "min": float(np.nanmin(cut)) if np.isfinite(cut).any() else None,
@@ -125,6 +141,7 @@ def run(ctx: AnalysisContext) -> DetectorOutput:
     factor = ADAPTIVE_CODECS.get(ctx.codec, 1.0)
     shifts = np.zeros(n_w)
     sides: dict[int, tuple[float, float]] = {}
+    contrasts: dict[int, float] = {}
     for w in range(2, n_w - 2):
         left = cut[max(0, w - 3) : w]
         right = cut[w : w + 3]
@@ -135,9 +152,24 @@ def run(ctx: AnalysisContext) -> DetectorOutput:
         if np.mean(np.abs(left - lm) < 300) < 0.66 or np.mean(np.abs(right - rm) < 300) < 0.66:
             continue
         s = abs(rm - lm)
-        if s >= max(p["min_shift_hz"], 0.1 * min(lm, rm)):
+        if s < max(p["min_shift_hz"], 0.1 * min(lm, rm)):
+            continue
+        # Confirm on the pooled spectra: the wider-band side must carry clearly more energy
+        # just above the narrower cutoff (relative to the band below it) than the other side.
+        lo_cut = min(lm, rm)
+        L = sums[max(0, w - 3) : w].sum(axis=0) / max(1, counts[max(0, w - 3) : w].sum())
+        R = sums[w : w + 3].sum(axis=0) / max(1, counts[w : w + 3].sum())
+        up = (lo_cut + 150.0, min(max(lm, rm), lo_cut + 1500.0) - 150.0)
+        ref = (max(300.0, lo_cut - 1500.0), lo_cut - 200.0)
+        vals = [_band_db(X, freqs, *up) for X in (L, R)] + [_band_db(X, freqs, *ref) for X in (L, R)]
+        if any(v is None for v in vals):
+            continue
+        rel_l, rel_r = vals[0] - vals[2], vals[1] - vals[3]
+        contrast = (rel_r - rel_l) if rm > lm else (rel_l - rel_r)
+        if contrast >= 30.0:
             shifts[w] = s
             sides[w] = (lm, rm)
+            contrasts[w] = contrast
     peaks = dsp.local_peaks(shifts, min_distance=3, threshold=p["min_shift_hz"])
     for w in peaks:
         lm, rm = sides[int(w)]
@@ -162,6 +194,7 @@ def run(ctx: AnalysisContext) -> DetectorOutput:
                     "cutoff_before_hz": lm,
                     "cutoff_after_hz": rm,
                     "shift_hz": abs(rm - lm),
+                    "band_contrast_db": contrasts[int(w)],
                     "codec": ctx.codec,
                     "codec_adaptive_factor": factor,
                 },

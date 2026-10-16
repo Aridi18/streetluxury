@@ -212,7 +212,7 @@ export const ForensicTimeline = forwardRef<TimelineHandle, Props>(function Foren
     regionsPlugin.on("region-clicked", (r: Region, e: MouseEvent) => {
       if (r.id.startsWith("f-")) {
         e.stopPropagation();
-        cb.current.onFindingClick(r.id.slice(2));
+        cb.current.onFindingClick(r.id.slice(2).split("~")[0]);
         w.setTime(r.start);
       }
     });
@@ -258,6 +258,26 @@ export const ForensicTimeline = forwardRef<TimelineHandle, Props>(function Foren
         reg.element.style.boxShadow = active ? "inset 0 0 0 1px rgba(244,243,248,0.7)" : "none";
         reg.element.style.cursor = "pointer";
         reg.element.setAttribute("title", `${f.id} · ${f.label} · ${fmtTime(f.start)}–${fmtTime(f.end)}`);
+      }
+      // Duplicated audio: mark the other occurrence too (either one may be the copy).
+      if (f.related && f.related.source_end > f.related.source_start) {
+        const label = document.createElement("div");
+        label.textContent = `${f.id} ↔`;
+        Object.assign(label.style, { fontSize: "10px", fontWeight: "600", color: "#fde68a", padding: "2px 4px", pointerEvents: "none" });
+        const src = r.addRegion({
+          id: `f-${f.id}~src`,
+          start: Math.max(0, f.related.source_start),
+          end: Math.min(duration, Math.max(f.related.source_end, f.related.source_start + minLen)),
+          color: "rgba(251,191,36,0.10)",
+          drag: false,
+          resize: false,
+          content: label,
+        });
+        if (src.element) {
+          src.element.style.border = `1px dashed ${active ? "#f4f3f8" : "rgba(251,191,36,0.55)"}`;
+          src.element.style.cursor = "pointer";
+          src.element.setAttribute("title", `${f.id} · matching audio ${fmtTime(f.related.source_start)}–${fmtTime(f.related.source_end)}`);
+        }
       }
     });
   }, [findings, activeFindingId, ready, duration]);

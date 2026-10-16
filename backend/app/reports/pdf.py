@@ -328,8 +328,8 @@ def build_analysis_report(
             if x.get("related"):
                 block.append(
                     _p(
-                        f"Matches source audio at {fmt_time(x['related'].get('source_start'))}–"
-                        f"{fmt_time(x['related'].get('source_end'))}.",
+                        f"Identical audio also occurs at {fmt_time(x['related'].get('source_start'))}–"
+                        f"{fmt_time(x['related'].get('source_end'))}; either occurrence may be the copy.",
                         st["base"],
                     )
                 )

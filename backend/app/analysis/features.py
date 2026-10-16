@@ -107,8 +107,8 @@ def voice_activity(frames: Frames) -> VadResult:
         if (t - s) < 8:
             speech[s:t] = False
 
-    near_speech = dsp.running_max(speech.astype(np.float32), 11) > 0  # +-50 ms guard
-    background = (~near_speech) & (~silent) & (es < floor + 5.0)
+    near_speech = dsp.running_max(speech.astype(np.float32), 7) > 0  # +-30 ms guard
+    background = (~near_speech) & (~silent) & (es < floor + 6.0)
     segments = [(s * FRAME_S, t * FRAME_S) for s, t in dsp.bool_runs(speech)]
     return VadResult(
         speech=speech,

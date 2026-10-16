@@ -55,7 +55,7 @@ def run_job(db: Session, comparison_id: str) -> None:
     if a is None or b is None:
         return
     if "processing" in (a.status, b.status):
-        raise RuntimeError("recordings are still being processed")
+        raise queue.Defer(5, "recordings are still being processed")
     for r in (a, b):
         if r.status != "ready" or not r.assets.get("original"):
             c.status = "failed"

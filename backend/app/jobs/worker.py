@@ -49,7 +49,8 @@ def _on_final_failure(db: Session, job: Job) -> None:
     from ..models import Recording
     from ..services import analyses, comparisons
 
-    msg = "Processing failed after retries. " + (job.last_error or "").splitlines()[-1][:300]
+    first = (job.last_error or "").splitlines()[0] if job.last_error else ""
+    msg = "Processing failed after retries. " + first[:300]
     if job.kind == "analysis":
         analyses.mark_failed(db, job.payload["analysis_id"], msg)
     elif job.kind == "comparison":
@@ -137,6 +138,12 @@ class Worker:
                 db.rollback()  # discard any uncommitted state from the handler
                 job = db.get(Job, job.id)
                 queue.complete(db, job)
+            except queue.Defer as d:
+                db.rollback()
+                job = db.get(Job, job.id)
+                queue.defer(db, job, d.seconds, str(d))
+                if job.status == "failed":
+                    _on_final_failure(db, job)
             except Exception as exc:
                 db.rollback()
                 job = db.get(Job, job.id)

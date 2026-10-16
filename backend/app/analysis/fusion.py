@@ -79,8 +79,11 @@ def fuse_edits(outputs: list[DetectorOutput]) -> dict[str, Any]:
         for c in members:
             fam[c.family] = max(fam.get(c.family, 0.0), c.strength)
         score = 1.0 - float(np.prod([1.0 - weights.get(f, 0.5) * s for f, s in fam.items()]))
-        start = min(c.start for c in members)
-        end = max(c.end for c in members)
+        # Localise from the stronger evidence only (weak, wide members would blur the interval).
+        top = max(c.strength for c in members)
+        core = [c for c in members if c.strength >= 0.5 * top]
+        start = min(c.start for c in core)
+        end = max(c.end for c in core)
         label = _label(fam, members, rep_thr)
         entry = {
             "start": round(start, 3),

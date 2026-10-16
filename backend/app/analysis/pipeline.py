@@ -24,6 +24,7 @@ from .detectors import (
     duplication,
     enf,
     noise_floor,
+    noise_track,
     prosody,
     reverb,
     spectral_change,
@@ -36,6 +37,7 @@ log = logging.getLogger(__name__)
 SIGNAL_DETECTORS = [
     ("bandwidth", "Bandwidth consistency", bandwidth.run),
     ("noise_floor", "Background noise continuity", noise_floor.run),
+    ("noise_track", "Noise floor through speech", noise_track.run),
     ("spectral_change", "Acoustic change (ΔBIC)", spectral_change.run),
     ("discontinuity", "Waveform discontinuities", discontinuity.run),
     ("digital_silence", "Digital silence", digital_silence.run),

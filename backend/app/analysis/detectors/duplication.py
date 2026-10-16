@@ -109,11 +109,11 @@ def run(ctx: AnalysisContext) -> DetectorOutput:
                 },
                 related={"source_start": src[0], "source_end": src[1]},
                 explanation=(
-                    f"{dur:.2f} s of audio here repeats audio from {_fmt(src[0])}–{_fmt(src[1])} "
-                    f"(waveform correlation {corr:.2f}, fingerprint bit error rate {m.ber:.2f}"
-                    + ("; the samples are identical" if exact else "")
-                    + "). Natural speech does not repeat this precisely; the segment appears to have "
-                    "been copied."
+                    f"{dur:.2f} s of audio at {_fmt(dst[0])}–{_fmt(dst[1])} is a repeat of "
+                    f"{_fmt(src[0])}–{_fmt(src[1])} (waveform correlation {corr:.2f}, fingerprint bit error rate "
+                    f"{m.ber:.2f}" + ("; the samples are identical" if exact else "") + "). Natural speech does "
+                    "not repeat this precisely, so one of the two stretches was probably copied from the other; "
+                    "the analysis cannot tell which one is the copy."
                 ),
                 alternatives=[
                     "Repeated music, ringtones, notification sounds or automated announcements.",

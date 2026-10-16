@@ -1,0 +1,161 @@
+{
+  "detector_id": "antideepfake-w2v2-small",
+  "created_at": "2026-10-16T19:36:12+00:00",
+  "model_version": "hf:nii-yamagishilab/wav2vec-small-anti-deepfake@9a13264",
+  "platt": {
+    "a": 86153080671.48093,
+    "b": 55374198098.535835
+  },
+  "thresholds": {
+    "possible": 0.5,
+    "strong": 0.6099999999999994
+  },
+  "use_for_verdict": true,
+  "verdict_rule": "use_for_verdict requires held-out EER <= 15% and AUC >= 0.9",
+  "provenance": {
+    "dataset": "In-the-Wild (M\u00fcller et al. 2022; SpeechAntiSpoofingBenchmarks/InTheWild, Apache-2.0), 120 clips from shards test-00000, test-00004",
+    "split": "speaker-disjoint: calibration and test halves by SHA-256 of the speaker name",
+    "procedure": "Platt scaling with balanced class weights on central 4 s windows of the calibration half; 'possible' and 'strong' thresholds at the 95th and 99th percentile of calibrated genuine calibration windows (minimum 0.5). Metrics on the test half only.",
+    "note": "Calibrated probabilities assume equal prior odds of genuine and synthetic speech and are valid for conditions resembling In-the-Wild (English public-figure speech from online media)."
+  },
+  "metrics": {
+    "calibration": {
+      "n_bonafide": 40,
+      "n_spoof": 17,
+      "eer": 0.12132352941176472,
+      "auc": 0.9588235294117646,
+      "at_possible": {
+        "tpr": 0.8823529411764706,
+        "fpr": 0.025,
+        "fnr": 0.11764705882352941,
+        "precision": 0.9375,
+        "tp": 15,
+        "fp": 1,
+        "fn": 2,
+        "tn": 39
+      },
+      "at_strong": {
+        "tpr": 0.8823529411764706,
+        "fpr": 0.025,
+        "fnr": 0.11764705882352941,
+        "precision": 0.9375,
+        "tp": 15,
+        "fp": 1,
+        "fn": 2,
+        "tn": 39
+      },
+      "brier": 0.05263157894736842
+    },
+    "test": {
+      "n_bonafide": 32,
+      "n_spoof": 27,
+      "eer": 0.0,
+      "auc": 1.0,
+      "at_possible": {
+        "tpr": 1.0,
+        "fpr": 0.0,
+        "fnr": 0.0,
+        "precision": 1.0,
+        "tp": 27,
+        "fp": 0,
+        "fn": 0,
+        "tn": 32
+      },
+      "at_strong": {
+        "tpr": 1.0,
+        "fpr": 0.0,
+        "fnr": 0.0,
+        "precision": 1.0,
+        "tp": 27,
+        "fp": 0,
+        "fn": 0,
+        "tn": 32
+      },
+      "brier": 2.0176683259774032e-44,
+      "by_length": [
+        {
+          "length": "2-4 s",
+          "n": 29,
+          "eer": 0.0,
+          "tpr_possible": 1.0,
+          "fpr_possible": 0.0
+        }
+      ],
+      "by_condition": [
+        {
+          "condition": "original",
+          "n": 39,
+          "eer": 0.0,
+          "auc": 1.0,
+          "tpr_possible": 1.0,
+          "fpr_possible": 0.0,
+          "tpr_strong": 1.0,
+          "fpr_strong": 0.0
+        },
+        {
+          "condition": "mp3_64k",
+          "n": 39,
+          "eer": 0.05131578947368424,
+          "auc": 0.9973684210526316,
+          "tpr_possible": 0.9473684210526315,
+          "fpr_possible": 0.0,
+          "tpr_strong": 0.9473684210526315,
+          "fpr_strong": 0.0
+        },
+        {
+          "condition": "aac_48k",
+          "n": 39,
+          "eer": 0.0,
+          "auc": 1.0,
+          "tpr_possible": 0.9473684210526315,
+          "fpr_possible": 0.0,
+          "tpr_strong": 0.9473684210526315,
+          "fpr_strong": 0.0
+        },
+        {
+          "condition": "opus_16k",
+          "n": 39,
+          "eer": 0.0,
+          "auc": 1.0,
+          "tpr_possible": 1.0,
+          "fpr_possible": 0.0,
+          "tpr_strong": 1.0,
+          "fpr_strong": 0.0
+        },
+        {
+          "condition": "narrowband_8k",
+          "n": 39,
+          "eer": 0.05131578947368424,
+          "auc": 0.9868421052631579,
+          "tpr_possible": 0.8947368421052632,
+          "fpr_possible": 0.0,
+          "tpr_strong": 0.8947368421052632,
+          "fpr_strong": 0.0
+        },
+        {
+          "condition": "noise_snr10",
+          "n": 39,
+          "eer": 0.20526315789473684,
+          "auc": 0.8868421052631578,
+          "tpr_possible": 0.47368421052631576,
+          "fpr_possible": 0.0,
+          "tpr_strong": 0.47368421052631576,
+          "fpr_strong": 0.0
+        }
+      ]
+    },
+    "out_of_domain_bonafide": {
+      "dataset": "LibriSpeech dev-clean (read English audiobooks), 300 genuine windows",
+      "fpr_possible": 0.006666666666666667,
+      "fpr_strong": 0.006666666666666667,
+      "median_probability": 1.928749847963918e-22
+    },
+    "partial_spoof_localisation": {
+      "composites": 4,
+      "synthetic_region_detection_rate": 1.0,
+      "false_flag_rate_genuine_windows": 0.0,
+      "median_boundary_error_s": 0.49175000000000013,
+      "note": "Each composite = genuine clip + spoof clip + genuine clip of the same speaker (In-the-Wild test speakers). Detected = a window overlapping the synthetic part by >= 50% is at or above the 'possible' threshold. Boundary error is the mean distance of the flagged span's edges from the true edges; 4 s windows bound localisation precision to roughly +/-2 s."
+    }
+  }
+}

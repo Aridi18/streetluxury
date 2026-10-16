@@ -82,7 +82,7 @@ def run_job(db: Session, analysis_id: str) -> None:
         db.commit()
         return
     if rec.status == "processing":
-        raise RuntimeError("recording is still being processed")  # retried by the queue
+        raise queue.Defer(5, "recording is still being processed")
     if rec.status != "ready" or not rec.assets.get("original"):
         a.status = "failed"
         a.error = rec.error or "The recording's audio is not available (it may have been deleted)."
