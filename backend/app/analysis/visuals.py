@@ -74,13 +74,13 @@ def spectrogram_tiles(x: np.ndarray, sr: int) -> list[dict]:
     for _, p in dsp.power_spectrogram(x, n_fft, hop, n_fft, block=2048):
         cols.append((10 * np.log10(p @ red + 1e-12)).astype(np.float32))
     sdb = np.concatenate(cols, axis=0) if cols else np.full((1, ROWS), -120.0, dtype=np.float32)
-    top = float(np.percentile(sdb[:: max(1, sdb.shape[0] // 20000)], 99.7))
-    lo = top - 90.0
+    top = float(np.percentile(sdb[:: max(1, sdb.shape[0] // 20000)], 99.9)) + 3.0
+    lo = top - 85.0
     tiles = []
     cols_per_tile = int(TILE_SECONDS * sr / hop)
     for i, c0 in enumerate(range(0, sdb.shape[0], cols_per_tile)):
         part = np.clip((sdb[c0 : c0 + cols_per_tile] - lo) / (top - lo), 0.0, 1.0)
-        part = (part.T[::-1] ** 0.8 * 255).astype(np.uint8)  # (ROWS, t), low frequencies at bottom
+        part = (part.T[::-1] ** 1.35 * 255).astype(np.uint8)  # (ROWS, t), low frequencies at bottom
         buf = io.BytesIO()
         Image.fromarray(_LUT[part], "RGB").save(buf, format="PNG", optimize=True)
         start = c0 * hop / sr

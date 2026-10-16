@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+/* Design tokens: dark charcoal surfaces, violet accent, high-contrast text. */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+
+  --color-bg: #09090d;
+  --color-surface: #111117;
+  --color-elevated: #17171f;
+  --color-raised: #1e1e28;
+  --color-line: #272733;
+  --color-line-strong: #363645;
+
+  --color-ink: #f4f3f8;
+  --color-ink-soft: #c9c7d6;
+  --color-muted: #9592a8;
+  --color-faint: #6c697f;
+
+  --color-accent: #8b5cf6;
+  --color-accent-soft: #a78bfa;
+  --color-accent-strong: #7c3aed;
+  --color-accent-ink: #ede9fe;
+
+  --color-sev-high: #fb7185;
+  --color-sev-high-bg: #3a1220;
+  --color-sev-medium: #fbbf24;
+  --color-sev-medium-bg: #3a2a0c;
+  --color-sev-low: #a1a1b5;
+  --color-ok: #34d399;
+  --color-ok-bg: #0d2e22;
+  --color-synthetic: #c084fc;
+  --color-synthetic-bg: #2c1640;
+
+  --radius-card: 14px;
+
+  --animate-fade-in: fade-in 220ms ease-out both;
+  --animate-pulse-soft: pulse-soft 1.8s ease-in-out infinite;
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.55; }
+  }
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "cv11", "ss01";
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--color-accent) 45%, transparent);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-accent-soft);
+    outline-offset: 2px;
+  }
+  * {
+    scrollbar-color: var(--color-line-strong) transparent;
+  }
+}
+
+@layer components {
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  .card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-card);
+  }
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    font-weight: 600;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
