@@ -12,9 +12,13 @@ export function Countdown({ endsAt, className }: { endsAt: string; className?: s
   const end = new Date(endsAt).getTime();
   const [now, setNow] = useState<number | null>(null);
   useEffect(() => {
-    setNow(Date.now());
-    const t = setInterval(() => setNow(Date.now()), 1000);
-    return () => clearInterval(t);
+    const tick = () => setNow(Date.now());
+    const first = setTimeout(tick, 0);
+    const t = setInterval(tick, 1000);
+    return () => {
+      clearTimeout(first);
+      clearInterval(t);
+    };
   }, []);
   if (now === null) return <span className={className}>Ends {new Date(endsAt).toLocaleDateString("en-GB", { day: "numeric", month: "short" })}</span>;
   if (now >= end) return null;

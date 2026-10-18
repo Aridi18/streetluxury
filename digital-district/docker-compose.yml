@@ -1,0 +1,69 @@
+# Digital District production stack.
+#   1. cp .env.example .env   and fill in every value (see docs/DEPLOYMENT.md)
+#   2. docker compose up -d --build
+#   3. docker compose run --rm migrate          (applies database migrations + imports the catalog on first run)
+#   4. docker compose run --rm migrate npm run owner:invite -- you@example.com "Your Name"
+# Caddy obtains and renews HTTPS certificates for your domain automatically.
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: digital_district
+      POSTGRES_USER: dd
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dd -d digital_district"]
+      interval: 5s
+      retries: 20
+    restart: unless-stopped
+
+  app:
+    build: { context: ., target: runner }
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql://dd:${POSTGRES_PASSWORD}@db:5432/digital_district
+      STORAGE_DIR: /data/storage
+    volumes: [storage:/data/storage]
+    depends_on:
+      db: { condition: service_healthy }
+    restart: unless-stopped
+
+  # One-off tasks: migrations, seed, owner invitation. Not started by "up".
+  migrate:
+    build: { context: ., target: builder }
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql://dd:${POSTGRES_PASSWORD}@db:5432/digital_district
+      STORAGE_DIR: /data/storage
+    volumes: [storage:/data/storage]
+    depends_on:
+      db: { condition: service_healthy }
+    command: sh -c "npx prisma migrate deploy && npx tsx prisma/seed.ts"
+    profiles: [tools]
+
+  # Runs scheduled jobs every 15 minutes (auto-cancel stale orders, renewal reminders, cleanup).
+  scheduler:
+    image: curlimages/curl:8.11.1
+    env_file: .env
+    entrypoint: ["/bin/sh", "-c", 'while true; do curl -fsS -X POST -H "Authorization: Bearer $$CRON_SECRET" http://app:3000/api/cron || true; echo; sleep 900; done']
+    depends_on: [app]
+    restart: unless-stopped
+
+  caddy:
+    image: caddy:2.8-alpine
+    ports: ["80:80", "443:443", "443:443/udp"]
+    environment:
+      SITE_DOMAIN: ${SITE_DOMAIN:-digitaldistrict.store}
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on: [app]
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  storage:
+  caddy_data:
+  caddy_config:

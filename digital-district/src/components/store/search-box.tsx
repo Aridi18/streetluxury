@@ -18,10 +18,7 @@ export function SearchBox({ className, autoFocus, defaultValue = "", large }: { 
 
   useEffect(() => {
     const term = q.trim();
-    if (term.length < 2) {
-      setData({ products: [], categories: [] });
-      return;
-    }
+    if (term.length < 2) return;
     const ctrl = new AbortController();
     const t = setTimeout(async () => {
       try {
@@ -45,9 +42,10 @@ export function SearchBox({ className, autoFocus, defaultValue = "", large }: { 
     return () => document.removeEventListener("mousedown", onClick);
   }, []);
 
+  const visible = q.trim().length >= 2 ? data : { products: [], categories: [] };
   const items = [
-    ...data.categories.map((c) => ({ label: c.name, hint: "Category", href: `/category/${c.slug}` })),
-    ...data.products.map((p) => ({ label: p.title, hint: p.isOnRequest ? "On request" : `$${(p.minPrice / 100).toFixed(p.minPrice % 100 ? 2 : 0)}`, href: `/product/${p.slug}` })),
+    ...visible.categories.map((c) => ({ label: c.name, hint: "Category", href: `/category/${c.slug}` })),
+    ...visible.products.map((p) => ({ label: p.title, hint: p.isOnRequest ? "On request" : `$${(p.minPrice / 100).toFixed(p.minPrice % 100 ? 2 : 0)}`, href: `/product/${p.slug}` })),
   ];
 
   function submit(e: React.FormEvent) {

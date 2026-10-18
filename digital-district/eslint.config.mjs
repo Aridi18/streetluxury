@@ -1,6 +1,14 @@
 import next from "eslint-config-next";
 
-export default [
+const config = [
   ...next,
-  { ignores: [".next/**", "node_modules/**", "storage/**", "playwright-report/**", "test-results/**"] },
+  {
+    rules: {
+      // API downloads (CSV exports, files) must be plain links, not client-side navigation.
+      "@next/next/no-html-link-for-pages": "off",
+    },
+  },
+  { ignores: [".next/**", "node_modules/**", "storage/**", "storage-test/**", "playwright-report/**", "test-results/**", "*.tmp.*"] },
 ];
+
+export default config;

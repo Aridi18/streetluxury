@@ -59,12 +59,18 @@ export async function saveProductImage(file: File, folder = "products") {
     throw new UserError("That file is not a supported image (use JPG, PNG, WebP or AVIF).");
   }
   const key = datedPrefix("public", folder);
-  for (const size of IMAGE_SIZES) {
-    const out = await sharp(input).rotate().resize({ width: size, withoutEnlargement: true }).webp({ quality: 82 }).toBuffer();
-    await put(`${key}-${size}.webp`, out);
+  const renditions: [number, Buffer][] = [];
+  try {
+    for (const size of IMAGE_SIZES) {
+      renditions.push([size, await sharp(input).rotate().resize({ width: size, withoutEnlargement: true }).webp({ quality: 82 }).toBuffer()]);
+    }
+  } catch {
+    throw new UserError("This image file appears to be damaged. Please export it again and re-upload.");
   }
-  const final = await sharp(input).rotate().resize({ width: 1600, withoutEnlargement: true }).metadata();
-  return { key, width: final.width ?? meta.width ?? null, height: final.height ?? meta.height ?? null };
+  for (const [size, out] of renditions) await put(`${key}-${size}.webp`, out);
+  const width = meta.width ? Math.min(meta.width, 1600) : null;
+  const height = meta.width && meta.height ? Math.round((meta.height * (width ?? meta.width)) / meta.width) : null;
+  return { key, width, height };
 }
 
 /** Stores an image byte-for-byte (used for the brand logo, which must never be altered). */

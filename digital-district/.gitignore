@@ -10,3 +10,4 @@ playwright-report/
 test-results/
 backups/
 storage-test/
+*.tmp.*

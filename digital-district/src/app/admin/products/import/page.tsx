@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { requireStaffPage } from "@/lib/auth";
 import { importProductsAction } from "@/app/admin/_actions/products";
 import { ActionForm } from "@/components/action-form";
@@ -27,7 +28,7 @@ export default async function ImportPage() {
           <Field label="Mode" htmlFor="mode"><Select id="mode" name="mode" defaultValue="check"><option value="check">Check the file only (no changes)</option><option value="import">Import now</option></Select></Field>
         </ActionForm>
       </Panel>
-      <a href="/admin/products" className={buttonClass("ghost", "sm")}>Back to products</a>
+      <Link href="/admin/products" className={buttonClass("ghost", "sm")}>Back to products</Link>
     </div>
   );
 }

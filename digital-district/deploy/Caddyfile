@@ -1,0 +1,13 @@
+# HTTPS reverse proxy. Certificates are issued and renewed automatically by Let's Encrypt
+# once your domain's DNS A record points at this server.
+{$SITE_DOMAIN} {
+	encode zstd gzip
+	request_body {
+		max_size 520MB
+	}
+	reverse_proxy app:3000
+}
+
+www.{$SITE_DOMAIN} {
+	redir https://{$SITE_DOMAIN}{uri} permanent
+}

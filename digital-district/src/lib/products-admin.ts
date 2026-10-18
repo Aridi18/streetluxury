@@ -22,7 +22,6 @@ export async function uniqueSlug(base: string, table: "product" | "category" | "
   const root = slugify(base) || "item";
   for (let i = 0; i < 200; i++) {
     const slug = i === 0 ? root : `${root}-${i + 1}`;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const found = await (client[table] as any).findUnique({ where: { slug }, select: { id: true } });
     if (!found || found.id === excludeId) return slug;
   }

@@ -9,7 +9,12 @@ import { CategoryIcon } from "./icons";
 export function MobileNav({ categories, links }: { categories: { name: string; slug: string; icon: string | null }[]; links: { label: string; href: string }[] }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  useEffect(() => setOpen(false), [pathname]);
+  const [lastPath, setLastPath] = useState(pathname);
+  if (pathname !== lastPath) {
+    // Close the menu after navigating.
+    setLastPath(pathname);
+    setOpen(false);
+  }
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {

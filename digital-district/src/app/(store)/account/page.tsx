@@ -7,13 +7,15 @@ import { resendVerificationAction } from "@/app/actions/account";
 import { OrderRow } from "@/components/store/order-row";
 import { Alert, Button, EmptyState, LinkButton } from "@/components/ui";
 
+const daysFromNow = (days: number) => new Date(Date.now() + days * 86400_000);
+
 export default async function AccountOverview() {
   const user = await requireUser();
   const [orders, counts, expiring] = await Promise.all([
     db.order.findMany({ where: { userId: user.id }, orderBy: { placedAt: "desc" }, take: 5, include: { _count: { select: { items: true } } } }),
     db.order.groupBy({ by: ["status"], where: { userId: user.id }, _count: true }),
     db.digitalDelivery.findMany({
-      where: { order: { userId: user.id }, status: "DELIVERED", expiresAt: { gt: new Date(), lt: new Date(Date.now() + 30 * 86400_000) } },
+      where: { order: { userId: user.id }, status: "DELIVERED", expiresAt: { gt: daysFromNow(0), lt: daysFromNow(30) } },
       include: { orderItem: true, order: true },
       orderBy: { expiresAt: "asc" },
     }),
