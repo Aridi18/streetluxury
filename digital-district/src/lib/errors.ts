@@ -12,6 +12,7 @@ export type ActionResult<T = undefined> =
 
 export function toActionError(err: unknown): { ok: false; error: string } {
   if (err instanceof UserError) return { ok: false, error: err.message };
+  if (err instanceof Error && err.name === "ForbiddenError") return { ok: false, error: err.message };
   // Let Next.js navigation signals (redirect/notFound) propagate.
   if (err && typeof err === "object" && "digest" in err && typeof (err as { digest: unknown }).digest === "string") {
     const digest = (err as { digest: string }).digest;

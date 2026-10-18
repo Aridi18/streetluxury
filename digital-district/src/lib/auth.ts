@@ -8,6 +8,7 @@ import { db } from "./db";
 import { randomToken, sha256 } from "./crypto";
 import { env } from "./env";
 import { hasPermission, isStaffRole, type Permission } from "./permissions";
+import { readSettings } from "./settings";
 
 export const SESSION_COOKIE = "dd_session";
 const CUSTOMER_SESSION_DAYS = 30;
@@ -126,9 +127,10 @@ export async function requireStaffPage(permission: Permission = "dashboard.view"
 }
 
 /** Use in admin server actions and route handlers: throws instead of redirecting. */
-export async function requireStaff(permission: Permission): Promise<User> {
+export async function requireStaff(permission: Permission, opts: { allowWithout2fa?: boolean } = {}): Promise<User> {
   const user = await getCurrentUser();
   if (!user || !isStaffRole(user.role) || !hasPermission(user.role, permission)) throw new ForbiddenError();
+  if (!opts.allowWithout2fa && !user.totpEnabledAt && (await readSettings()).require2faForStaff) throw new ForbiddenError();
   return user;
 }
 

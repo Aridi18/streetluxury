@@ -87,3 +87,19 @@ export function resolvePeriod(preset: PeriodPreset = "30d", customFrom?: string,
   }
   return { from: zonedMidnight(fromYmd), to: zonedMidnight(addDaysYmd(lastYmd, 1)), fromYmd, toYmd: lastYmd, preset, label };
 }
+
+/** Parses a "YYYY-MM-DDTHH:mm" value from a datetime-local input as Lebanon time. */
+export function zonedDateTime(value: string, tz = BUSINESS_TZ): Date | null {
+  const m = /^(\d{4}-\d{2}-\d{2})T(\d{2}):(\d{2})$/.exec(value.trim());
+  if (!m) return null;
+  const midnight = zonedMidnight(m[1], tz);
+  return new Date(midnight.getTime() + (Number(m[2]) * 60 + Number(m[3])) * 60_000);
+}
+
+/** Formats an instant for a datetime-local input, in Lebanon time. */
+export function toZonedInput(d: Date | null | undefined, tz = BUSINESS_TZ): string {
+  if (!d) return "";
+  const parts = new Intl.DateTimeFormat("en-CA", { timeZone: tz, year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false }).formatToParts(d);
+  const g = (t: string) => parts.find((p) => p.type === t)?.value ?? "00";
+  return `${g("year")}-${g("month")}-${g("day")}T${g("hour") === "24" ? "00" : g("hour")}:${g("minute")}`;
+}
