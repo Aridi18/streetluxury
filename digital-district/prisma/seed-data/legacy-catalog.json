@@ -1,0 +1,1869 @@
+{
+ "source": "https://digitaldistrict-storefront.lovable.app (exported 2026-10-18)",
+ "categories": [
+  {
+   "name": "Streaming & Entertainment",
+   "slug": "streaming",
+   "description": "Netflix, Disney+, Prime Video, Shahid, OSN+ and more.",
+   "icon": "Clapperboard",
+   "position": 1,
+   "active": true
+  },
+  {
+   "name": "Music & Audio",
+   "slug": "music",
+   "description": "Spotify, YouTube Music, Anghami and Apple Music.",
+   "icon": "Music",
+   "position": 2,
+   "active": true
+  },
+  {
+   "name": "AI Services",
+   "slug": "ai",
+   "description": "ChatGPT Plus, Gemini, Claude, Perplexity and more.",
+   "icon": "Sparkles",
+   "position": 3,
+   "active": true
+  },
+  {
+   "name": "Design & Creative",
+   "slug": "creative",
+   "description": "Canva, Adobe Creative Cloud, CapCut and Figma.",
+   "icon": "PenTool",
+   "position": 4,
+   "active": true
+  },
+  {
+   "name": "Autodesk & Engineering",
+   "slug": "autodesk",
+   "description": "AutoCAD, 3ds Max and other Autodesk applications.",
+   "icon": "Ruler",
+   "position": 5,
+   "active": true
+  },
+  {
+   "name": "Windows & Microsoft",
+   "slug": "microsoft",
+   "description": "Windows licences, Microsoft 365 and Office.",
+   "icon": "Monitor",
+   "position": 6,
+   "active": true
+  },
+  {
+   "name": "VPN Services",
+   "slug": "vpn",
+   "description": "NordVPN, ExpressVPN and CyberGhost.",
+   "icon": "ShieldCheck",
+   "position": 7,
+   "active": true
+  },
+  {
+   "name": "Gaming",
+   "slug": "gaming",
+   "description": "Gaming subscriptions, gift cards and in-game credits.",
+   "icon": "Gamepad2",
+   "position": 8,
+   "active": true
+  },
+  {
+   "name": "Education",
+   "slug": "education",
+   "description": "Coursera, LinkedIn Premium and Duolingo.",
+   "icon": "GraduationCap",
+   "position": 9,
+   "active": true
+  },
+  {
+   "name": "Social Media Services",
+   "slug": "social-media",
+   "description": "Instagram and TikTok growth services.",
+   "icon": "Share2",
+   "position": 10,
+   "active": true
+  },
+  {
+   "name": "Business Software",
+   "slug": "business",
+   "description": "Zoom and other business tools.",
+   "icon": "Briefcase",
+   "position": 11,
+   "active": true
+  },
+  {
+   "name": "PDF Software",
+   "slug": "pdf",
+   "description": "Adobe Acrobat Pro and PDF tools.",
+   "icon": "FileText",
+   "position": 12,
+   "active": true
+  },
+  {
+   "name": "Web & Development",
+   "slug": "web-development",
+   "description": "Websites, development services and digital solutions.",
+   "icon": "Code2",
+   "position": 13,
+   "active": true
+  }
+ ],
+ "products": [
+  {
+   "name": "Netflix",
+   "slug": "netflix",
+   "category": "streaming",
+   "shortDescription": "Premium Netflix plans at unbeatable prices.",
+   "description": "Enjoy Netflix on your favourite device with fast, reliable delivery from Digital District. Choose the duration that suits you and receive your access details after confirmation.",
+   "importantInfo": null,
+   "badge": "Best Seller",
+   "featured": true,
+   "bestseller": true,
+   "onRequest": false,
+   "active": true,
+   "position": 1,
+   "brandDomain": "netflix.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "1 Month",
+     "duration": "1 Month",
+     "accountType": null,
+     "price": 3.5,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    },
+    {
+     "name": "3 Months",
+     "duration": "3 Months",
+     "accountType": null,
+     "price": 9.5,
+     "salePrice": null,
+     "position": 2,
+     "active": true
+    },
+    {
+     "name": "6 Months",
+     "duration": "6 Months",
+     "accountType": null,
+     "price": 15,
+     "salePrice": null,
+     "position": 3,
+     "active": true
+    },
+    {
+     "name": "1 Year",
+     "duration": "1 Year",
+     "accountType": null,
+     "price": 25,
+     "salePrice": null,
+     "position": 4,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "Disney+",
+   "slug": "disney-plus",
+   "category": "streaming",
+   "shortDescription": "Disney+ subscriptions with instant support.",
+   "description": "Watch Disney, Pixar, Marvel, Star Wars and National Geographic. Delivered quickly after order confirmation.",
+   "importantInfo": null,
+   "badge": "Popular",
+   "featured": true,
+   "bestseller": false,
+   "onRequest": false,
+   "active": true,
+   "position": 2,
+   "brandDomain": "disneyplus.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "1 Month",
+     "duration": "1 Month",
+     "accountType": null,
+     "price": 4,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    },
+    {
+     "name": "3 Months",
+     "duration": "3 Months",
+     "accountType": null,
+     "price": 11,
+     "salePrice": null,
+     "position": 2,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "Prime Video",
+   "slug": "prime-video",
+   "category": "streaming",
+   "shortDescription": "Amazon Prime Video plans.",
+   "description": "Stream thousands of movies and series with Prime Video. Multiple durations available.",
+   "importantInfo": null,
+   "badge": null,
+   "featured": false,
+   "bestseller": false,
+   "onRequest": false,
+   "active": true,
+   "position": 3,
+   "brandDomain": "primevideo.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "1 Month",
+     "duration": "1 Month",
+     "accountType": null,
+     "price": 3.5,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    },
+    {
+     "name": "3 Months",
+     "duration": "3 Months",
+     "accountType": null,
+     "price": 9,
+     "salePrice": null,
+     "position": 2,
+     "active": true
+    },
+    {
+     "name": "6 Months",
+     "duration": "6 Months",
+     "accountType": null,
+     "price": 15,
+     "salePrice": null,
+     "position": 3,
+     "active": true
+    },
+    {
+     "name": "1 Year",
+     "duration": "1 Year",
+     "accountType": null,
+     "price": 20,
+     "salePrice": null,
+     "position": 4,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "Shahid",
+   "slug": "shahid",
+   "category": "streaming",
+   "shortDescription": "Shahid VIP one-user and full account plans.",
+   "description": "The largest Arabic streaming library. Choose a one-user plan or a full account.",
+   "importantInfo": null,
+   "badge": "Best Seller",
+   "featured": true,
+   "bestseller": true,
+   "onRequest": false,
+   "active": true,
+   "position": 4,
+   "brandDomain": "shahid.mbc.net",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "1 Month — One User",
+     "duration": "1 Month",
+     "accountType": "One User",
+     "price": 3,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    },
+    {
+     "name": "3 Months — One User",
+     "duration": "3 Months",
+     "accountType": "One User",
+     "price": 8,
+     "salePrice": null,
+     "position": 2,
+     "active": true
+    },
+    {
+     "name": "6 Months — One User",
+     "duration": "6 Months",
+     "accountType": "One User",
+     "price": 15,
+     "salePrice": null,
+     "position": 3,
+     "active": true
+    },
+    {
+     "name": "1 Year — One User",
+     "duration": "1 Year",
+     "accountType": "One User",
+     "price": 25,
+     "salePrice": null,
+     "position": 4,
+     "active": true
+    },
+    {
+     "name": "1 Month — Full Account",
+     "duration": "1 Month",
+     "accountType": "Full Account",
+     "price": 10,
+     "salePrice": null,
+     "position": 5,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "OSN+",
+   "slug": "osn-plus",
+   "category": "streaming",
+   "shortDescription": "OSN+ monthly and yearly plans.",
+   "description": "Premium Arabic and international entertainment with OSN+.",
+   "importantInfo": null,
+   "badge": null,
+   "featured": false,
+   "bestseller": false,
+   "onRequest": false,
+   "active": true,
+   "position": 5,
+   "brandDomain": "osnplus.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "1 Month",
+     "duration": "1 Month",
+     "accountType": null,
+     "price": 4,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    },
+    {
+     "name": "1 Year",
+     "duration": "1 Year",
+     "accountType": null,
+     "price": 50,
+     "salePrice": null,
+     "position": 2,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "TOD",
+   "slug": "tod",
+   "category": "streaming",
+   "shortDescription": "TOD full account subscriptions.",
+   "description": "Live sport and entertainment with a TOD full account.",
+   "importantInfo": null,
+   "badge": null,
+   "featured": false,
+   "bestseller": false,
+   "onRequest": false,
+   "active": true,
+   "position": 6,
+   "brandDomain": "tod.tv",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "1 Month — Full Account",
+     "duration": "1 Month",
+     "accountType": "Full Account",
+     "price": 20,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "Apple TV+",
+   "slug": "apple-tv-plus",
+   "category": "streaming",
+   "shortDescription": "Apple TV+ one-user and full account plans.",
+   "description": "Award-winning Apple Originals. One-user and full-account options available.",
+   "importantInfo": null,
+   "badge": null,
+   "featured": false,
+   "bestseller": false,
+   "onRequest": false,
+   "active": true,
+   "position": 7,
+   "brandDomain": "tv.apple.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "1 Month — One User",
+     "duration": "1 Month",
+     "accountType": "One User",
+     "price": 6,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    },
+    {
+     "name": "3 Months — One User",
+     "duration": "3 Months",
+     "accountType": "One User",
+     "price": 11,
+     "salePrice": null,
+     "position": 2,
+     "active": true
+    },
+    {
+     "name": "1 Month — Full Account",
+     "duration": "1 Month",
+     "accountType": "Full Account",
+     "price": 10,
+     "salePrice": null,
+     "position": 3,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "Paramount+",
+   "slug": "paramount-plus",
+   "category": "streaming",
+   "shortDescription": "Paramount+ monthly plan.",
+   "description": "Movies, series and originals from Paramount+.",
+   "importantInfo": null,
+   "badge": null,
+   "featured": false,
+   "bestseller": false,
+   "onRequest": false,
+   "active": true,
+   "position": 8,
+   "brandDomain": "paramountplus.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "1 Month",
+     "duration": "1 Month",
+     "accountType": null,
+     "price": 5,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "HBO Max",
+   "slug": "hbo-max",
+   "category": "streaming",
+   "shortDescription": "HBO Max / Max monthly plan.",
+   "description": "Blockbusters and HBO originals in one place.",
+   "importantInfo": null,
+   "badge": null,
+   "featured": false,
+   "bestseller": false,
+   "onRequest": false,
+   "active": true,
+   "position": 9,
+   "brandDomain": "hbomax.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "1 Month",
+     "duration": "1 Month",
+     "accountType": null,
+     "price": 5,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "Crunchyroll",
+   "slug": "crunchyroll",
+   "category": "streaming",
+   "shortDescription": "Anime streaming with Crunchyroll.",
+   "description": "Thousands of anime series and movies, subbed and dubbed.",
+   "importantInfo": null,
+   "badge": null,
+   "featured": false,
+   "bestseller": false,
+   "onRequest": false,
+   "active": true,
+   "position": 10,
+   "brandDomain": "crunchyroll.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "1 Month — One User",
+     "duration": "1 Month",
+     "accountType": "One User",
+     "price": 3,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    },
+    {
+     "name": "3 Months — One User",
+     "duration": "3 Months",
+     "accountType": "One User",
+     "price": 8,
+     "salePrice": null,
+     "position": 2,
+     "active": true
+    },
+    {
+     "name": "6 Months — One User",
+     "duration": "6 Months",
+     "accountType": "One User",
+     "price": 14,
+     "salePrice": null,
+     "position": 3,
+     "active": true
+    },
+    {
+     "name": "1 Year — One User",
+     "duration": "1 Year",
+     "accountType": "One User",
+     "price": 20,
+     "salePrice": null,
+     "position": 4,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "IPTV",
+   "slug": "iptv",
+   "category": "streaming",
+   "shortDescription": "IPTV packages with wide channel coverage.",
+   "description": "Live channels and on-demand content. Setup guidance provided after purchase.",
+   "importantInfo": null,
+   "badge": "Popular",
+   "featured": false,
+   "bestseller": true,
+   "onRequest": false,
+   "active": true,
+   "position": 11,
+   "brandDomain": null,
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "3 Months",
+     "duration": "3 Months",
+     "accountType": null,
+     "price": 18,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    },
+    {
+     "name": "6 Months",
+     "duration": "6 Months",
+     "accountType": null,
+     "price": 25,
+     "salePrice": null,
+     "position": 2,
+     "active": true
+    },
+    {
+     "name": "1 Year",
+     "duration": "1 Year",
+     "accountType": null,
+     "price": 35,
+     "salePrice": null,
+     "position": 3,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "Spotify Premium",
+   "slug": "spotify-premium",
+   "category": "music",
+   "shortDescription": "Ad-free music with Spotify Premium.",
+   "description": "Offline listening, unlimited skips and high quality audio.",
+   "importantInfo": null,
+   "badge": "Best Seller",
+   "featured": true,
+   "bestseller": true,
+   "onRequest": false,
+   "active": true,
+   "position": 1,
+   "brandDomain": "spotify.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "1 Month",
+     "duration": "1 Month",
+     "accountType": null,
+     "price": 4,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    },
+    {
+     "name": "3 Months",
+     "duration": "3 Months",
+     "accountType": null,
+     "price": 10,
+     "salePrice": null,
+     "position": 2,
+     "active": true
+    },
+    {
+     "name": "6 Months",
+     "duration": "6 Months",
+     "accountType": null,
+     "price": 20,
+     "salePrice": null,
+     "position": 3,
+     "active": true
+    },
+    {
+     "name": "1 Year",
+     "duration": "1 Year",
+     "accountType": null,
+     "price": 35,
+     "salePrice": null,
+     "position": 4,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "YouTube Music Premium",
+   "slug": "youtube-music-premium",
+   "category": "music",
+   "shortDescription": "Ad-free YouTube Music.",
+   "description": "Background play, downloads and ad-free listening.",
+   "importantInfo": null,
+   "badge": null,
+   "featured": false,
+   "bestseller": false,
+   "onRequest": false,
+   "active": true,
+   "position": 2,
+   "brandDomain": "music.youtube.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "1 Month",
+     "duration": "1 Month",
+     "accountType": null,
+     "price": 4,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    },
+    {
+     "name": "3 Months",
+     "duration": "3 Months",
+     "accountType": null,
+     "price": 10,
+     "salePrice": null,
+     "position": 2,
+     "active": true
+    },
+    {
+     "name": "6 Months",
+     "duration": "6 Months",
+     "accountType": null,
+     "price": 20,
+     "salePrice": null,
+     "position": 3,
+     "active": true
+    },
+    {
+     "name": "1 Year",
+     "duration": "1 Year",
+     "accountType": null,
+     "price": 37,
+     "salePrice": null,
+     "position": 4,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "Anghami Plus",
+   "slug": "anghami-plus",
+   "category": "music",
+   "shortDescription": "Anghami Plus subscriptions.",
+   "description": "The leading Arabic music platform, ad-free.",
+   "importantInfo": null,
+   "badge": null,
+   "featured": false,
+   "bestseller": false,
+   "onRequest": false,
+   "active": true,
+   "position": 3,
+   "brandDomain": "anghami.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "3 Months",
+     "duration": "3 Months",
+     "accountType": null,
+     "price": 8,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    },
+    {
+     "name": "6 Months",
+     "duration": "6 Months",
+     "accountType": null,
+     "price": 15,
+     "salePrice": null,
+     "position": 2,
+     "active": true
+    },
+    {
+     "name": "1 Year",
+     "duration": "1 Year",
+     "accountType": null,
+     "price": 20,
+     "salePrice": null,
+     "position": 3,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "Apple Music",
+   "slug": "apple-music",
+   "category": "music",
+   "shortDescription": "Apple Music monthly plan.",
+   "description": "Over 100 million songs, lossless and spatial audio.",
+   "importantInfo": null,
+   "badge": null,
+   "featured": false,
+   "bestseller": false,
+   "onRequest": false,
+   "active": true,
+   "position": 4,
+   "brandDomain": "music.apple.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "1 Month",
+     "duration": "1 Month",
+     "accountType": null,
+     "price": 6,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "ChatGPT Plus",
+   "slug": "chatgpt-plus",
+   "category": "ai",
+   "shortDescription": "Private and shared ChatGPT Plus plans.",
+   "description": "Faster responses and access to advanced models. Choose a private or shared plan.",
+   "importantInfo": null,
+   "badge": "Best Seller",
+   "featured": true,
+   "bestseller": true,
+   "onRequest": false,
+   "active": true,
+   "position": 1,
+   "brandDomain": "openai.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "1 Month — Private",
+     "duration": "1 Month",
+     "accountType": "Private",
+     "price": 14,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    },
+    {
+     "name": "3 Months — Shared",
+     "duration": "3 Months",
+     "accountType": "Shared",
+     "price": 25,
+     "salePrice": null,
+     "position": 2,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "Google AI Pro / Gemini",
+   "slug": "google-ai-pro-gemini",
+   "category": "ai",
+   "shortDescription": "Google AI Pro yearly plan.",
+   "description": "Access Google's advanced Gemini models with a one year plan.",
+   "importantInfo": null,
+   "badge": "Popular",
+   "featured": true,
+   "bestseller": false,
+   "onRequest": false,
+   "active": true,
+   "position": 2,
+   "brandDomain": "gemini.google.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "1 Year",
+     "duration": "1 Year",
+     "accountType": null,
+     "price": 25,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "Claude Pro",
+   "slug": "claude-pro",
+   "category": "ai",
+   "shortDescription": "Private Claude Pro plan.",
+   "description": "Anthropic Claude Pro with higher usage limits.",
+   "importantInfo": null,
+   "badge": null,
+   "featured": false,
+   "bestseller": false,
+   "onRequest": false,
+   "active": true,
+   "position": 3,
+   "brandDomain": "claude.ai",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "1 Month — Private",
+     "duration": "1 Month",
+     "accountType": "Private",
+     "price": 25,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "Perplexity Pro",
+   "slug": "perplexity-pro",
+   "category": "ai",
+   "shortDescription": "Perplexity Pro monthly and yearly.",
+   "description": "Advanced AI search with Perplexity Pro.",
+   "importantInfo": null,
+   "badge": null,
+   "featured": false,
+   "bestseller": false,
+   "onRequest": false,
+   "active": true,
+   "position": 4,
+   "brandDomain": "perplexity.ai",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "1 Month",
+     "duration": "1 Month",
+     "accountType": null,
+     "price": 10,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    },
+    {
+     "name": "1 Year",
+     "duration": "1 Year",
+     "accountType": null,
+     "price": 40,
+     "salePrice": null,
+     "position": 2,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "ElevenLabs",
+   "slug": "elevenlabs",
+   "category": "ai",
+   "shortDescription": "AI voice generation, available on request.",
+   "description": "Contact us on WhatsApp for current availability and pricing.",
+   "importantInfo": null,
+   "badge": "On Request",
+   "featured": false,
+   "bestseller": false,
+   "onRequest": true,
+   "active": true,
+   "position": 5,
+   "brandDomain": "elevenlabs.io",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": []
+  },
+  {
+   "name": "Leonardo AI",
+   "slug": "leonardo-ai",
+   "category": "ai",
+   "shortDescription": "AI image generation, available on request.",
+   "description": "Contact us on WhatsApp for current availability and pricing.",
+   "importantInfo": null,
+   "badge": "On Request",
+   "featured": false,
+   "bestseller": false,
+   "onRequest": true,
+   "active": true,
+   "position": 6,
+   "brandDomain": "leonardo.ai",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": []
+  },
+  {
+   "name": "Grok",
+   "slug": "grok",
+   "category": "ai",
+   "shortDescription": "Grok access, available on request.",
+   "description": "Contact us on WhatsApp for current availability and pricing.",
+   "importantInfo": null,
+   "badge": "On Request",
+   "featured": false,
+   "bestseller": false,
+   "onRequest": true,
+   "active": true,
+   "position": 7,
+   "brandDomain": "x.ai",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": []
+  },
+  {
+   "name": "Cursor",
+   "slug": "cursor",
+   "category": "ai",
+   "shortDescription": "Cursor AI code editor, available on request.",
+   "description": "Contact us on WhatsApp for current availability and pricing.",
+   "importantInfo": null,
+   "badge": "On Request",
+   "featured": false,
+   "bestseller": false,
+   "onRequest": true,
+   "active": true,
+   "position": 8,
+   "brandDomain": "cursor.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": []
+  },
+  {
+   "name": "Canva Pro",
+   "slug": "canva-pro",
+   "category": "creative",
+   "shortDescription": "Canva Pro yearly and lifetime.",
+   "description": "Premium templates, brand kit, background remover and more.",
+   "importantInfo": null,
+   "badge": "Best Seller",
+   "featured": true,
+   "bestseller": true,
+   "onRequest": false,
+   "active": true,
+   "position": 1,
+   "brandDomain": "canva.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "1 Year",
+     "duration": "1 Year",
+     "accountType": null,
+     "price": 10,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    },
+    {
+     "name": "Lifetime",
+     "duration": "Lifetime",
+     "accountType": null,
+     "price": 15,
+     "salePrice": null,
+     "position": 2,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "Adobe Creative Cloud",
+   "slug": "adobe-creative-cloud",
+   "category": "creative",
+   "shortDescription": "Adobe Creative Cloud individual plans.",
+   "description": "Photoshop, Illustrator, Premiere Pro and the full Adobe suite.",
+   "importantInfo": null,
+   "badge": "Popular",
+   "featured": true,
+   "bestseller": false,
+   "onRequest": false,
+   "active": true,
+   "position": 2,
+   "brandDomain": "adobe.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "1 Month — Individual",
+     "duration": "1 Month",
+     "accountType": "Individual",
+     "price": 20,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    },
+    {
+     "name": "3 Months — Individual",
+     "duration": "3 Months",
+     "accountType": "Individual",
+     "price": 45,
+     "salePrice": null,
+     "position": 2,
+     "active": true
+    },
+    {
+     "name": "1 Year — Individual",
+     "duration": "1 Year",
+     "accountType": "Individual",
+     "price": 180,
+     "salePrice": null,
+     "position": 3,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "CapCut Pro",
+   "slug": "capcut-pro",
+   "category": "creative",
+   "shortDescription": "CapCut Pro video editing.",
+   "description": "Pro effects, no watermark and cloud storage.",
+   "importantInfo": null,
+   "badge": null,
+   "featured": false,
+   "bestseller": false,
+   "onRequest": false,
+   "active": true,
+   "position": 3,
+   "brandDomain": "capcut.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "1 Month",
+     "duration": "1 Month",
+     "accountType": null,
+     "price": 8,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    },
+    {
+     "name": "6 Months",
+     "duration": "6 Months",
+     "accountType": null,
+     "price": 40,
+     "salePrice": null,
+     "position": 2,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "Figma",
+   "slug": "figma",
+   "category": "creative",
+   "shortDescription": "Figma yearly plan.",
+   "description": "Professional design and prototyping.",
+   "importantInfo": null,
+   "badge": null,
+   "featured": false,
+   "bestseller": false,
+   "onRequest": false,
+   "active": true,
+   "position": 4,
+   "brandDomain": "figma.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "1 Year",
+     "duration": "1 Year",
+     "accountType": null,
+     "price": 25,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "Freepik",
+   "slug": "freepik",
+   "category": "creative",
+   "shortDescription": "Freepik premium, available on request.",
+   "description": "Contact us on WhatsApp for current availability and pricing.",
+   "importantInfo": null,
+   "badge": "On Request",
+   "featured": false,
+   "bestseller": false,
+   "onRequest": true,
+   "active": true,
+   "position": 5,
+   "brandDomain": "freepik.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": []
+  },
+  {
+   "name": "Envato Elements",
+   "slug": "envato-elements",
+   "category": "creative",
+   "shortDescription": "Envato Elements, available on request.",
+   "description": "Contact us on WhatsApp for current availability and pricing.",
+   "importantInfo": null,
+   "badge": "On Request",
+   "featured": false,
+   "bestseller": false,
+   "onRequest": true,
+   "active": true,
+   "position": 6,
+   "brandDomain": "elements.envato.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": []
+  },
+  {
+   "name": "Autodesk",
+   "slug": "autodesk",
+   "category": "autodesk",
+   "shortDescription": "AutoCAD, 3ds Max and other Autodesk applications.",
+   "description": "One plan covering supported Autodesk applications including AutoCAD, Autodesk 3ds Max and more. Tell us which application you need before ordering and we will confirm availability.",
+   "importantInfo": null,
+   "badge": "Popular",
+   "featured": true,
+   "bestseller": false,
+   "onRequest": false,
+   "active": true,
+   "position": 1,
+   "brandDomain": "autodesk.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "1 Year",
+     "duration": "1 Year",
+     "accountType": null,
+     "price": 20,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    },
+    {
+     "name": "3 Years",
+     "duration": "3 Years",
+     "accountType": null,
+     "price": 50,
+     "salePrice": null,
+     "position": 2,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "Windows 11 Pro",
+   "slug": "windows-11-pro",
+   "category": "microsoft",
+   "shortDescription": "Windows 11 Pro licence key.",
+   "description": "Genuine licence key with activation guidance.",
+   "importantInfo": null,
+   "badge": "Best Seller",
+   "featured": true,
+   "bestseller": true,
+   "onRequest": false,
+   "active": true,
+   "position": 1,
+   "brandDomain": "microsoft.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "Licence",
+     "duration": "Lifetime Licence",
+     "accountType": null,
+     "price": 15,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "Windows 11 Home",
+   "slug": "windows-11-home",
+   "category": "microsoft",
+   "shortDescription": "Windows 11 Home licence key.",
+   "description": "Genuine licence key with activation guidance.",
+   "importantInfo": null,
+   "badge": null,
+   "featured": false,
+   "bestseller": false,
+   "onRequest": false,
+   "active": true,
+   "position": 2,
+   "brandDomain": "microsoft.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "Licence",
+     "duration": "Lifetime Licence",
+     "accountType": null,
+     "price": 14,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "Windows 10 Pro",
+   "slug": "windows-10-pro",
+   "category": "microsoft",
+   "shortDescription": "Windows 10 Pro licence key.",
+   "description": "Genuine licence key with activation guidance.",
+   "importantInfo": null,
+   "badge": null,
+   "featured": false,
+   "bestseller": false,
+   "onRequest": false,
+   "active": true,
+   "position": 3,
+   "brandDomain": "microsoft.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "Licence",
+     "duration": "Lifetime Licence",
+     "accountType": null,
+     "price": 12,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "Windows Server",
+   "slug": "windows-server",
+   "category": "microsoft",
+   "shortDescription": "Windows Server licences, on request.",
+   "description": "Contact us on WhatsApp for current availability and pricing.",
+   "importantInfo": null,
+   "badge": "On Request",
+   "featured": false,
+   "bestseller": false,
+   "onRequest": true,
+   "active": true,
+   "position": 4,
+   "brandDomain": "microsoft.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": []
+  },
+  {
+   "name": "Microsoft 365 Personal",
+   "slug": "microsoft-365-personal",
+   "category": "microsoft",
+   "shortDescription": "Microsoft 365 Personal yearly.",
+   "description": "Word, Excel, PowerPoint, Outlook and OneDrive storage.",
+   "importantInfo": null,
+   "badge": null,
+   "featured": false,
+   "bestseller": false,
+   "onRequest": false,
+   "active": true,
+   "position": 5,
+   "brandDomain": "microsoft.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "1 Year",
+     "duration": "1 Year",
+     "accountType": null,
+     "price": 30,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "Microsoft Office Home",
+   "slug": "microsoft-office-home",
+   "category": "microsoft",
+   "shortDescription": "Microsoft Office Home, on request.",
+   "description": "Contact us on WhatsApp for current availability and pricing.",
+   "importantInfo": null,
+   "badge": "On Request",
+   "featured": false,
+   "bestseller": false,
+   "onRequest": true,
+   "active": true,
+   "position": 6,
+   "brandDomain": "microsoft.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": []
+  },
+  {
+   "name": "Microsoft Office Professional Plus",
+   "slug": "microsoft-office-professional-plus",
+   "category": "microsoft",
+   "shortDescription": "Office Professional Plus licence.",
+   "description": "Pricing is updated regularly. Contact us to confirm the current price and availability.",
+   "importantInfo": null,
+   "badge": "On Request",
+   "featured": false,
+   "bestseller": false,
+   "onRequest": true,
+   "active": true,
+   "position": 7,
+   "brandDomain": "microsoft.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": []
+  },
+  {
+   "name": "OneDrive Storage",
+   "slug": "onedrive-storage",
+   "category": "microsoft",
+   "shortDescription": "OneDrive storage plans, on request.",
+   "description": "Contact us on WhatsApp for current availability and pricing.",
+   "importantInfo": null,
+   "badge": "On Request",
+   "featured": false,
+   "bestseller": false,
+   "onRequest": true,
+   "active": true,
+   "position": 8,
+   "brandDomain": "onedrive.live.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": []
+  },
+  {
+   "name": "NordVPN",
+   "slug": "nordvpn",
+   "category": "vpn",
+   "shortDescription": "NordVPN yearly plan.",
+   "description": "Secure, fast VPN for everyday privacy.",
+   "importantInfo": null,
+   "badge": null,
+   "featured": false,
+   "bestseller": false,
+   "onRequest": false,
+   "active": true,
+   "position": 1,
+   "brandDomain": "nordvpn.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "1 Year",
+     "duration": "1 Year",
+     "accountType": null,
+     "price": 30,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "ExpressVPN",
+   "slug": "expressvpn",
+   "category": "vpn",
+   "shortDescription": "ExpressVPN yearly plan.",
+   "description": "Reliable VPN with wide server coverage.",
+   "importantInfo": null,
+   "badge": null,
+   "featured": false,
+   "bestseller": false,
+   "onRequest": false,
+   "active": true,
+   "position": 2,
+   "brandDomain": "expressvpn.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "1 Year",
+     "duration": "1 Year",
+     "accountType": null,
+     "price": 30,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "CyberGhost",
+   "slug": "cyberghost",
+   "category": "vpn",
+   "shortDescription": "CyberGhost yearly plan.",
+   "description": "Privacy-focused VPN with easy apps.",
+   "importantInfo": null,
+   "badge": null,
+   "featured": false,
+   "bestseller": false,
+   "onRequest": false,
+   "active": true,
+   "position": 3,
+   "brandDomain": "cyberghostvpn.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "1 Year",
+     "duration": "1 Year",
+     "accountType": null,
+     "price": 35,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "PlayStation",
+   "slug": "playstation",
+   "category": "gaming",
+   "shortDescription": "PlayStation subscriptions and gift cards, on request.",
+   "description": "Gaming subscriptions, gift cards, games and in-game credits available on request.",
+   "importantInfo": null,
+   "badge": "On Request",
+   "featured": false,
+   "bestseller": false,
+   "onRequest": true,
+   "active": true,
+   "position": 1,
+   "brandDomain": "playstation.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": []
+  },
+  {
+   "name": "Xbox",
+   "slug": "xbox",
+   "category": "gaming",
+   "shortDescription": "Xbox subscriptions and gift cards, on request.",
+   "description": "Gaming subscriptions, gift cards, games and in-game credits available on request.",
+   "importantInfo": null,
+   "badge": "On Request",
+   "featured": false,
+   "bestseller": false,
+   "onRequest": true,
+   "active": true,
+   "position": 2,
+   "brandDomain": "xbox.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": []
+  },
+  {
+   "name": "Steam",
+   "slug": "steam",
+   "category": "gaming",
+   "shortDescription": "Steam wallet and games, on request.",
+   "description": "Gift cards, games and in-game credits available on request.",
+   "importantInfo": null,
+   "badge": "On Request",
+   "featured": false,
+   "bestseller": false,
+   "onRequest": true,
+   "active": true,
+   "position": 3,
+   "brandDomain": "store.steampowered.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": []
+  },
+  {
+   "name": "PC Games",
+   "slug": "pc-games",
+   "category": "gaming",
+   "shortDescription": "PC games and credits, on request.",
+   "description": "Games and in-game credits available on request.",
+   "importantInfo": null,
+   "badge": "On Request",
+   "featured": false,
+   "bestseller": false,
+   "onRequest": true,
+   "active": true,
+   "position": 4,
+   "brandDomain": "epicgames.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": []
+  },
+  {
+   "name": "Mobile Gaming",
+   "slug": "mobile-gaming",
+   "category": "gaming",
+   "shortDescription": "Mobile game top-ups, on request.",
+   "description": "In-game currency and top-ups available on request.",
+   "importantInfo": null,
+   "badge": "On Request",
+   "featured": false,
+   "bestseller": false,
+   "onRequest": true,
+   "active": true,
+   "position": 5,
+   "brandDomain": "play.google.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": []
+  },
+  {
+   "name": "Gaming Gift Cards",
+   "slug": "gaming-gift-cards",
+   "category": "gaming",
+   "shortDescription": "Gift cards for major platforms, on request.",
+   "description": "Gift cards available on request for major gaming platforms.",
+   "importantInfo": null,
+   "badge": "On Request",
+   "featured": false,
+   "bestseller": false,
+   "onRequest": true,
+   "active": true,
+   "position": 6,
+   "brandDomain": null,
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": []
+  },
+  {
+   "name": "Coursera Plus",
+   "slug": "coursera-plus",
+   "category": "education",
+   "shortDescription": "Coursera Plus yearly access.",
+   "description": "Thousands of courses and certificates from top universities.",
+   "importantInfo": null,
+   "badge": null,
+   "featured": false,
+   "bestseller": false,
+   "onRequest": false,
+   "active": true,
+   "position": 1,
+   "brandDomain": "coursera.org",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "1 Year",
+     "duration": "1 Year",
+     "accountType": null,
+     "price": 40,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "LinkedIn Premium",
+   "slug": "linkedin-premium",
+   "category": "education",
+   "shortDescription": "LinkedIn Premium, on request.",
+   "description": "Contact us on WhatsApp for current availability and pricing.",
+   "importantInfo": null,
+   "badge": "On Request",
+   "featured": false,
+   "bestseller": false,
+   "onRequest": true,
+   "active": true,
+   "position": 2,
+   "brandDomain": "linkedin.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": []
+  },
+  {
+   "name": "Duolingo",
+   "slug": "duolingo",
+   "category": "education",
+   "shortDescription": "Duolingo yearly plan.",
+   "description": "Learn a new language ad-free with unlimited hearts.",
+   "importantInfo": null,
+   "badge": null,
+   "featured": false,
+   "bestseller": false,
+   "onRequest": false,
+   "active": true,
+   "position": 3,
+   "brandDomain": "duolingo.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "1 Year",
+     "duration": "1 Year",
+     "accountType": null,
+     "price": 50,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "Instagram Services",
+   "slug": "instagram-services",
+   "category": "social-media",
+   "shortDescription": "Instagram followers, likes and views.",
+   "description": "Instagram growth services including followers, likes and views. Pricing on request.",
+   "importantInfo": null,
+   "badge": "On Request",
+   "featured": false,
+   "bestseller": false,
+   "onRequest": true,
+   "active": true,
+   "position": 1,
+   "brandDomain": "instagram.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": []
+  },
+  {
+   "name": "TikTok Services",
+   "slug": "tiktok-services",
+   "category": "social-media",
+   "shortDescription": "TikTok followers, likes and views.",
+   "description": "TikTok growth services including followers, likes and views. Pricing on request.",
+   "importantInfo": null,
+   "badge": "On Request",
+   "featured": false,
+   "bestseller": false,
+   "onRequest": true,
+   "active": true,
+   "position": 2,
+   "brandDomain": "tiktok.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": []
+  },
+  {
+   "name": "Zoom Pro",
+   "slug": "zoom-pro",
+   "category": "business",
+   "shortDescription": "Zoom Pro yearly plan.",
+   "description": "Longer meetings, cloud recording and more.",
+   "importantInfo": null,
+   "badge": null,
+   "featured": false,
+   "bestseller": false,
+   "onRequest": false,
+   "active": true,
+   "position": 1,
+   "brandDomain": "zoom.us",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "1 Year",
+     "duration": "1 Year",
+     "accountType": null,
+     "price": 35,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "Adobe Acrobat Pro",
+   "slug": "adobe-acrobat-pro",
+   "category": "pdf",
+   "shortDescription": "Adobe Acrobat Pro yearly.",
+   "description": "Edit, convert, sign and protect PDF documents.",
+   "importantInfo": null,
+   "badge": null,
+   "featured": false,
+   "bestseller": false,
+   "onRequest": false,
+   "active": true,
+   "position": 1,
+   "brandDomain": "adobe.com",
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": [
+    {
+     "name": "1 Year",
+     "duration": "1 Year",
+     "accountType": null,
+     "price": 40,
+     "salePrice": null,
+     "position": 1,
+     "active": true
+    }
+   ]
+  },
+  {
+   "name": "Web & Development Services",
+   "slug": "web-development-services",
+   "category": "web-development",
+   "shortDescription": "Websites, development and digital solutions.",
+   "description": "Websites, development services and digital solutions available on request. Message us on WhatsApp with your requirements for a quote.",
+   "importantInfo": null,
+   "badge": "On Request",
+   "featured": true,
+   "bestseller": false,
+   "onRequest": true,
+   "active": true,
+   "position": 1,
+   "brandDomain": null,
+   "seoTitle": null,
+   "seoDescription": null,
+   "createdAt": "2026-08-10T13:57:48.255639+00:00",
+   "plans": []
+  }
+ ],
+ "settings": {
+  "business_name": "Digital District",
+  "domain": "digitaldistrict.store",
+  "whatsapp_number": "96181745567",
+  "whatsapp_display": "+961 81 745 567",
+  "support_email": "digitialdistrict@gmail.com",
+  "instagram_url": "https://instagram.com/digitaldistrict.lb",
+  "instagram_handle": "digitaldistrict.lb",
+  "facebook_url": "",
+  "tiktok_url": "",
+  "currency": "USD",
+  "currency_symbol": "$",
+  "hero_title": "Premium Digital Services. Simple. Fast. Reliable.",
+  "hero_subtitle": "Get your favorite subscriptions, software, licenses, AI tools, entertainment services, gaming products, and digital solutions from Digital District.",
+  "announcement": "Fast delivery on all digital services. Message us on WhatsApp any time.",
+  "whatsapp_default_message": "Hello Digital District, I would like to ask about one of your services.",
+  "ga_measurement_id": "",
+  "meta_pixel_id": ""
+ },
+ "faqs": [
+  {
+   "q": "How do I order?",
+   "a": "Browse the store, choose your product and plan, then add it to your cart and check out — or tap Order on WhatsApp and we will confirm everything with you directly."
+  },
+  {
+   "q": "How long does delivery take?",
+   "a": "Most orders are delivered within minutes to a few hours after payment is confirmed. Some services may take longer and we will always tell you in advance."
+  },
+  {
+   "q": "How will I receive my digital product?",
+   "a": "Your access details, licence key or activation instructions are sent to you on WhatsApp or by email after your order is confirmed."
+  },
+  {
+   "q": "How do I contact support?",
+   "a": "WhatsApp is our fastest support channel: +961 81 745 567. You can also use the contact form on our contact page."
+  },
+  {
+   "q": "Can I order through WhatsApp?",
+   "a": "Yes. Every product page and your cart have an Order on WhatsApp button that prepares your message automatically."
+  },
+  {
+   "q": "Which payment methods are supported?",
+   "a": "We confirm the available payment methods with you on WhatsApp when your order is placed."
+  },
+  {
+   "q": "What happens if a service is unavailable?",
+   "a": "If something is temporarily unavailable we will tell you straight away and offer an alternative or a full refund."
+  },
+  {
+   "q": "How do subscriptions work?",
+   "a": "Each plan runs for the duration shown on the product page. We will remind you before it ends so you can renew."
+  },
+  {
+   "q": "What does \"On Request\" mean?",
+   "a": "Some services have prices that change often or depend on your exact requirements. For those, contact us on WhatsApp and we will quote you."
+  }
+ ]
+}

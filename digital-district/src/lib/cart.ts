@@ -274,19 +274,23 @@ export async function getCartView(opts: { deliveryMethod?: "DELIVERY" | "PICKUP"
   const customer = { userId: user?.id, ...opts.customer };
   const customerProblem = coupon ? await couponCustomerProblem(coupon, customer) : null;
 
-  const totals = computeTotals({
-    lines: lineInputs(active, parentOf),
-    automaticPromos: promos,
-    coupon,
-    couponCustomerProblem: customerProblem,
-    deliveryMethod: opts.deliveryMethod ?? (zone ? "DELIVERY" : "NONE"),
-    zone: zone as ZoneInput | null,
-    tax: { enabled: settings.taxEnabled, rateBps: settings.taxRateBps, inclusive: settings.taxInclusive },
-    now: new Date(),
-  });
+  const lines = lineInputs(active, parentOf);
+  const now = new Date();
+  const tax = { enabled: settings.taxEnabled, rateBps: settings.taxRateBps, inclusive: settings.taxInclusive };
+  const quote = (deliveryMethod: "DELIVERY" | "PICKUP" | "NONE", z: ZoneInput | null) =>
+    computeTotals({ lines, automaticPromos: promos, coupon, couponCustomerProblem: customerProblem, deliveryMethod, zone: z, tax, now });
+  const totals = quote(opts.deliveryMethod ?? (zone ? "DELIVERY" : "NONE"), zone as ZoneInput | null);
   if (couponLookup === "invalid") totals.coupon = { promo: null, error: "This code is not valid." };
 
-  return { cart, items: active, saved, totals, issues, zones, couponCode: cart?.couponCode ?? null, settings };
+  // Pre-computed totals for every delivery choice, so checkout can update instantly as the customer picks one.
+  const pick = (t: ReturnType<typeof quote>) => ({ shippingTotal: t.shippingTotal, taxTotal: t.taxTotal, total: t.total, freeShippingReason: t.freeShippingReason });
+  const deliveryQuotes = {
+    none: pick(quote("NONE", null)),
+    pickup: pick(quote("PICKUP", null)),
+    zones: Object.fromEntries(zones.map((z) => [z.id, pick(quote("DELIVERY", z))])),
+  };
+
+  return { cart, items: active, saved, totals, deliveryQuotes, issues, zones, couponCode: cart?.couponCode ?? null, settings };
 }
 
 export async function cartItemCount(): Promise<number> {

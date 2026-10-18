@@ -6,12 +6,14 @@ import sharp, { type Metadata } from "sharp";
 import { randomToken } from "./crypto";
 import { env } from "./env";
 import { UserError } from "./errors";
+import { IMAGE_SIZES } from "./media";
+
+export { IMAGE_SIZES, imageUrl, imageSrcSet, publicFileUrl } from "./media";
 
 // Storage layout (outside the web root):
 //   public/...   product images, banners, logo — served by /media/[...key]
 //   private/...  digital product files and payment proofs — only served through authorised routes
 
-export const IMAGE_SIZES = [400, 800, 1600] as const;
 const MAX_IMAGE_BYTES = 15 * 1024 * 1024;
 const MAX_PROOF_BYTES = 8 * 1024 * 1024;
 const MAX_DIGITAL_FILE_BYTES = 500 * 1024 * 1024;
@@ -80,20 +82,6 @@ export async function saveOriginalImage(file: File, folder = "brand") {
   const key = `${datedPrefix("public", folder)}.${ext}`;
   await put(key, input);
   return key;
-}
-
-export function imageUrl(key: string | null | undefined, size: (typeof IMAGE_SIZES)[number] = 800): string | null {
-  if (!key) return null;
-  return `/media/${key.replace(/^public\//, "")}-${size}.webp`;
-}
-
-export function imageSrcSet(key: string): string {
-  return IMAGE_SIZES.map((s) => `${imageUrl(key, s)} ${s}w`).join(", ");
-}
-
-export function publicFileUrl(key: string | null | undefined): string | null {
-  if (!key) return null;
-  return `/media/${key.replace(/^public\//, "")}`;
 }
 
 function sniffProof(buf: Buffer): string | null {

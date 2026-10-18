@@ -1,0 +1,111 @@
+@import "tailwindcss";
+@import "@fontsource-variable/sora/index.css";
+@import "@fontsource-variable/manrope/index.css";
+
+/* Digital District design tokens: deep black and charcoal, refined purple accents, crisp white type. */
+@theme {
+  --font-sans: "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Sora Variable", "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #07070a;
+  --color-canvas: #0b0b0f;
+  --color-surface: #121218;
+  --color-surface-2: #18181f;
+  --color-surface-3: #20202a;
+  --color-line: #262531;
+  --color-line-strong: #353343;
+  --color-fg: #f5f4fa;
+  --color-muted: #a6a3b5;
+  --color-subtle: #75728a;
+
+  --color-brand-50: #f5f2ff;
+  --color-brand-100: #ece6ff;
+  --color-brand-200: #d9cdff;
+  --color-brand-300: #bda6ff;
+  --color-brand-400: #a07cff;
+  --color-brand-500: #8b5cf6;
+  --color-brand-600: #7a3fef;
+  --color-brand-700: #6a2fd6;
+  --color-brand-800: #5426aa;
+  --color-brand-900: #3b1d78;
+
+  --color-success: #34d399;
+  --color-warning: #fbbf24;
+  --color-danger: #f87171;
+  --color-info: #60a5fa;
+
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+  --shadow-card: 0 1px 0 0 rgb(255 255 255 / 0.04) inset, 0 18px 40px -24px rgb(0 0 0 / 0.8);
+  --shadow-glow: 0 0 0 1px rgb(139 92 246 / 0.35), 0 12px 40px -12px rgb(139 92 246 / 0.45);
+
+  --animate-fade-up: fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
+  }
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-canvas text-fg font-sans antialiased;
+    min-height: 100dvh;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
+  }
+  ::selection {
+    background: rgb(139 92 246 / 0.45);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-brand-400);
+    outline-offset: 2px;
+  }
+  input, select, textarea, button {
+    font: inherit;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .card {
+    @apply rounded-2xl border border-line bg-surface shadow-[var(--shadow-card)];
+  }
+  .eyebrow {
+    @apply text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-300;
+  }
+  .hairline {
+    background: linear-gradient(90deg, transparent, rgb(139 92 246 / 0.45), transparent);
+    height: 1px;
+  }
+  .prose-dd {
+    @apply text-[15px] leading-7 text-muted;
+  }
+  .prose-dd h2 { @apply mt-8 mb-3 text-xl font-semibold text-fg; }
+  .prose-dd h3 { @apply mt-6 mb-2 text-lg font-semibold text-fg; }
+  .prose-dd p { @apply mb-4; }
+  .prose-dd ul { @apply mb-4 list-disc space-y-1 pl-5; }
+  .prose-dd ol { @apply mb-4 list-decimal space-y-1 pl-5; }
+  .prose-dd a { @apply text-brand-300 underline underline-offset-4 hover:text-brand-200; }
+  .prose-dd strong { @apply font-semibold text-fg; }
+  .scrollbar-none { scrollbar-width: none; }
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+  .bg-grid {
+    background-image:
+      linear-gradient(rgb(255 255 255 / 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(255 255 255 / 0.035) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+}

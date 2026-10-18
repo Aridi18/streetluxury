@@ -670,7 +670,8 @@ model OrderNote {
 // ───────────────────────────── Payments and refunds ─────────────────────────────
 
 enum PaymentMethodKind {
-  MANUAL
+  MANUAL // customer pays by transfer (Whish, OMT, USDT, bank) and submits a reference for verification
+  ARRANGED // payment is agreed with staff on WhatsApp after the order is confirmed
   CASH_ON_DELIVERY
   ONLINE_CARD
 }
