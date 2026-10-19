@@ -1,3 +1,5 @@
+import { createHash } from "node:crypto";
+
 // Central, validated access to environment configuration.
 
 function required(name: string): string {
@@ -8,15 +10,19 @@ function required(name: string): string {
 
 export const env = {
   get appUrl() {
-    return (process.env.APP_URL || "http://localhost:3000").replace(/\/$/, "");
+    // RENDER_EXTERNAL_URL is set automatically on Render, so the free demo needs no configuration.
+    return (process.env.APP_URL || process.env.RENDER_EXTERNAL_URL || "http://localhost:3000").replace(/\/$/, "");
   },
   get storageDir() {
     return process.env.STORAGE_DIR || "./storage";
   },
   get encryptionKey(): Buffer {
-    const key = Buffer.from(required("DATA_ENCRYPTION_KEY"), "base64");
-    if (key.length !== 32) throw new Error("DATA_ENCRYPTION_KEY must be 32 bytes, base64-encoded");
-    return key;
+    const raw = required("DATA_ENCRYPTION_KEY");
+    const key = Buffer.from(raw, "base64");
+    if (key.length === 32) return key;
+    // Hosting platforms may generate secrets in other formats: accept any long random secret and derive a 32-byte key.
+    if (raw.length < 32) throw new Error("DATA_ENCRYPTION_KEY must be 32 bytes base64-encoded (openssl rand -base64 32) or a random secret of at least 32 characters");
+    return createHash("sha256").update(raw).digest();
   },
   get cronSecret() {
     return process.env.CRON_SECRET || "";

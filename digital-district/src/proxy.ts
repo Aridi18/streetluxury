@@ -4,7 +4,7 @@ import { NextResponse, type NextRequest } from "next/server";
 export function proxy(request: NextRequest) {
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
   const isDev = process.env.NODE_ENV === "development";
-  const https = (process.env.APP_URL || "").startsWith("https://");
+  const https = (process.env.APP_URL || process.env.RENDER_EXTERNAL_URL || "").startsWith("https://");
   const gateway = (process.env.MPGS_GATEWAY_URL || "").replace(/\/$/, "");
   const csp = [
     "default-src 'self'",

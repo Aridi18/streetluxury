@@ -39,7 +39,16 @@ The catalog, contact details, FAQs and policy texts from the previous storefront
 
 Money is stored in integer cents (USD) to avoid rounding errors, and every total is recomputed on the server.
 
-## Try it on your computer (easiest)
+## Try it online for free (no install)
+
+1. Create a free account at **render.com** and connect your GitHub.
+2. In Render choose **New → Blueprint**, pick the `streetluxury` repository and the branch that contains this folder, and confirm. When asked for `LOCAL_OWNER_EMAIL`, enter the email you'll sign in with.
+3. Wait for the first deploy (about 10 minutes). Open the **digital-district-demo** service → **Logs**, and copy the link after “Create your owner account here”.
+4. Open the link, choose a password and sign in. Your demo address is shown at the top of the service page (`https://digital-district-demo-….onrender.com`).
+
+Free-plan limits: the site sleeps after ~15 minutes without visitors (the next visit takes about a minute), uploaded photos are lost on restart, and Render's free database is temporary. It's for trying the store — not for real customers.
+
+## Try it on your computer
 
 1. Install **Docker Desktop** (free) from docker.com and start it.
 2. Download this repository (GitHub → **Code → Download ZIP**, then unzip) or `git clone` it, and open a terminal in the `digital-district` folder.

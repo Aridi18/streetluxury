@@ -1,0 +1,31 @@
+# One-click free demo of the Digital District store on Render (render.com).
+# Render → New → Blueprint → choose this repository and the branch with the digital-district folder.
+# After the first deploy, open the service's Logs and copy the "Create your owner account" link.
+# Free plan limits: the site sleeps after ~15 minutes without visitors (first visit then takes ~1 minute),
+# uploaded photos are not kept across restarts, and Render's free database is temporary.
+# For the real store, use digital-district/docker-compose.yml (see digital-district/docs/DEPLOYMENT.md).
+services:
+  - type: web
+    name: digital-district-demo
+    runtime: docker
+    plan: free
+    dockerfilePath: ./digital-district/Dockerfile.demo
+    dockerContext: ./digital-district
+    healthCheckPath: /api/health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: digital-district-demo-db
+          property: connectionString
+      - key: DATA_ENCRYPTION_KEY
+        generateValue: true
+      - key: CRON_SECRET
+        generateValue: true
+      - key: LOCAL_OWNER_EMAIL
+        sync: false
+
+databases:
+  - name: digital-district-demo-db
+    plan: free
+    databaseName: digital_district
+    user: dd

@@ -46,9 +46,9 @@ export async function sendVerificationEmail(user: { id: string; email: string; n
   }));
 }
 
-export async function createStaffInvitation(email: string, role: UserRole, name: string | null, invitedById: string | null) {
+export async function createStaffInvitation(email: string, role: UserRole, name: string | null, invitedById: string | null, opts: { revokeExisting?: boolean } = {}) {
   const token = randomToken();
-  await db.staffInvitation.updateMany({ where: { email, acceptedAt: null, revokedAt: null }, data: { revokedAt: new Date() } });
+  if (opts.revokeExisting !== false) await db.staffInvitation.updateMany({ where: { email, acceptedAt: null, revokedAt: null }, data: { revokedAt: new Date() } });
   await db.staffInvitation.create({ data: { email, role, name, tokenHash: sha256(token), invitedById, expiresAt: new Date(Date.now() + 72 * 3600_000) } });
   const url = `${env.appUrl}/invite/${token}`;
   await sendEmail(email, "You're invited to the Digital District admin", "staff_invitation", renderEmail({
