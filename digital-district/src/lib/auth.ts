@@ -62,7 +62,7 @@ export async function createSession(user: Pick<User, "id" | "role" | "totpEnable
   const jar = await cookies();
   jar.set(SESSION_COOKIE, token, {
     httpOnly: true,
-    secure: env.isProduction,
+    secure: env.secureCookies,
     sameSite: "lax",
     path: "/",
     maxAge: Math.floor(ttlMs / 1000),

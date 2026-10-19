@@ -33,6 +33,10 @@ export const env = {
   get isProduction() {
     return process.env.NODE_ENV === "production";
   },
+  /** Cookies are marked Secure whenever the store is served over HTTPS (always the case in real deployments). */
+  get secureCookies() {
+    return this.appUrl.startsWith("https://");
+  },
   mpgs: {
     get gatewayUrl() {
       return (process.env.MPGS_GATEWAY_URL || "").replace(/\/$/, "");

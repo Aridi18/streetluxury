@@ -94,7 +94,7 @@ export async function getOrCreateCart(): Promise<{ id: string }> {
   }
   const token = randomToken();
   const cart = await db.cart.create({ data: { tokenHash: sha256(token) }, select: { id: true } });
-  (await cookies()).set(CART_COOKIE, token, { httpOnly: true, secure: env.isProduction, sameSite: "lax", path: "/", maxAge: 60 * 60 * 24 * 60 });
+  (await cookies()).set(CART_COOKIE, token, { httpOnly: true, secure: env.secureCookies, sameSite: "lax", path: "/", maxAge: 60 * 60 * 24 * 60 });
   return cart;
 }
 

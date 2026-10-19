@@ -4,6 +4,7 @@ import { NextResponse, type NextRequest } from "next/server";
 export function proxy(request: NextRequest) {
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
   const isDev = process.env.NODE_ENV === "development";
+  const https = (process.env.APP_URL || "").startsWith("https://");
   const gateway = (process.env.MPGS_GATEWAY_URL || "").replace(/\/$/, "");
   const csp = [
     "default-src 'self'",
@@ -18,7 +19,7 @@ export function proxy(request: NextRequest) {
     "base-uri 'self'",
     `form-action 'self'${gateway ? ` ${gateway}` : ""}`,
     "frame-ancestors 'none'",
-    ...(isDev ? [] : ["upgrade-insecure-requests"]),
+    ...(https ? ["upgrade-insecure-requests"] : []),
   ].join("; ");
 
   const requestHeaders = new Headers(request.headers);
@@ -31,7 +32,7 @@ export function proxy(request: NextRequest) {
   response.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
   response.headers.set("X-Frame-Options", "DENY");
   response.headers.set("Permissions-Policy", "camera=(), microphone=(), geolocation=(), payment=()");
-  if (!isDev) response.headers.set("Strict-Transport-Security", "max-age=63072000; includeSubDomains; preload");
+  if (https) response.headers.set("Strict-Transport-Security", "max-age=63072000; includeSubDomains; preload");
   if (request.nextUrl.pathname.startsWith("/admin") || request.nextUrl.pathname.startsWith("/account")) {
     response.headers.set("Cache-Control", "no-store");
     response.headers.set("X-Robots-Tag", "noindex, nofollow");

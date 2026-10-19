@@ -1,0 +1,52 @@
+# Try Digital District on your own computer — no domain or configuration needed.
+#   docker compose -f docker-compose.local.yml up --build
+# Then open the invitation link printed in the output (look for "Create your owner account"),
+# or run:  docker compose -f docker-compose.local.yml logs setup
+# The store runs at http://localhost:3000. Stop with Ctrl+C; your data is kept for next time.
+# The secrets below are for local trial only — production uses docker-compose.yml with your own .env.
+x-local-env: &local-env
+  DATABASE_URL: postgresql://dd:local-trial-only@db:5432/digital_district
+  APP_URL: http://localhost:3000
+  DATA_ENCRYPTION_KEY: bG9jYWwtdHJpYWwtb25seS1rZXktZG8tbm90LXVzZSE=
+  CRON_SECRET: local-trial-only
+  STORAGE_DIR: /data/storage
+  LOCAL_OWNER_EMAIL: ${LOCAL_OWNER_EMAIL:-owner@example.com}
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: digital_district
+      POSTGRES_USER: dd
+      POSTGRES_PASSWORD: local-trial-only
+    volumes: [local_pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dd -d digital_district"]
+      interval: 3s
+      retries: 30
+
+  setup:
+    build: { context: ., target: builder }
+    image: digital-district-builder:local
+    environment: *local-env
+    command: sh -c "npx prisma migrate deploy && npx tsx prisma/seed.ts && npx tsx scripts/first-run.ts"
+    depends_on:
+      db: { condition: service_healthy }
+
+  app:
+    build: { context: ., target: runner }
+    image: digital-district-app:local
+    environment: *local-env
+    ports: ["3000:3000"]
+    volumes: [local_storage:/data/storage]
+    depends_on:
+      setup: { condition: service_completed_successfully }
+
+  scheduler:
+    image: curlimages/curl:8.11.1
+    entrypoint: ["/bin/sh", "-c", 'while true; do sleep 900; curl -fsS -X POST -H "Authorization: Bearer local-trial-only" http://app:3000/api/cron || true; done']
+    depends_on: [app]
+
+volumes:
+  local_pgdata:
+  local_storage:

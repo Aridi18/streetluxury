@@ -39,6 +39,21 @@ The catalog, contact details, FAQs and policy texts from the previous storefront
 
 Money is stored in integer cents (USD) to avoid rounding errors, and every total is recomputed on the server.
 
+## Try it on your computer (easiest)
+
+1. Install **Docker Desktop** (free) from docker.com and start it.
+2. Download this repository (GitHub → **Code → Download ZIP**, then unzip) or `git clone` it, and open a terminal in the `digital-district` folder.
+3. Run:
+   ```bash
+   docker compose -f docker-compose.local.yml up --build
+   ```
+   The first start takes a few minutes. When it's ready, the output shows **“Create your owner account here:”** with a link.
+4. Open that link, choose a password, then sign in with `owner@example.com`.
+   - Store: http://localhost:3000 — Admin: http://localhost:3000/admin
+   - Lost the link? Run `docker compose -f docker-compose.local.yml logs setup`.
+
+Stop with **Ctrl+C**; your test data is kept for next time. To erase it and start fresh: `docker compose -f docker-compose.local.yml down -v`. This trial setup uses fixed local-only secrets — for the real store use `docker-compose.yml` and `docs/DEPLOYMENT.md`.
+
 ## Quick start (development)
 
 Requirements: Node.js 22+, PostgreSQL 16.
